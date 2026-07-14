@@ -1,0 +1,12 @@
+更新 GitHub Pages：
+1. 解壓縮本檔。
+2. 到 GitHub repository → Add file → Upload files。
+3. 上傳並覆蓋 index.html、styles.css、script.js、hero.png。
+4. Commit changes。
+5. 等待 1–3 分鐘後重新整理網站。
+
+本版更新：
+- 劃撥帳號：22542803
+- Hero 圖片改為根目錄 hero.png
+- 新增頂端選單，可跳至品牌故事、活動介紹、報名方案、付款方式、故事展、FAQ
+- 新增立即報名按鈕
