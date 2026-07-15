@@ -1,0 +1,9 @@
+Walk for Life 官網更新版 v6
+
+本次更新：
+1. 「活動介紹」區塊背景改為 walk.png。
+2. 「故事展」區塊背景改為 care.png。
+3. 兩區均加入深綠色透明遮罩與文字陰影，提升文字可讀性。
+4. 針對平板與手機調整背景裁切位置。
+
+上傳時請保持 index.html、styles.css、script.js、hero.png、walk.png、care.png 位於同一層目錄。
