@@ -178,3 +178,47 @@ footer a{color:rgba(255,255,255,.86)}
     background-position:38% center;
   }
 }
+
+
+/* v7: embedded registration modal */
+button.btn{font:inherit;cursor:pointer}
+.nav-button{font:inherit;cursor:pointer;border:0}
+.btn-dark{background:var(--green);color:#fff;box-shadow:0 12px 30px rgba(23,76,70,.18)}
+.registration-actions-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.registration-card .btn{width:100%}
+.payment-report-card{border-color:rgba(23,76,70,.32);background:linear-gradient(180deg,#fff,#f2f7f5)}
+body.modal-open{overflow:hidden}
+.form-modal{position:fixed;inset:0;z-index:5000;display:none;place-items:center;padding:22px}
+.form-modal.open{display:grid}
+.form-modal-backdrop{position:absolute;inset:0;background:rgba(5,25,22,.72);backdrop-filter:blur(10px)}
+.form-dialog{position:relative;width:min(1080px,100%);height:min(92svh,920px);display:flex;flex-direction:column;overflow:hidden;background:rgba(251,250,247,.98);border:1px solid rgba(255,255,255,.32);border-radius:26px;box-shadow:0 30px 90px rgba(0,0,0,.38)}
+.form-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 24px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.form-dialog-kicker{margin:0 0 2px;font:700 .68rem "Montserrat",sans-serif;letter-spacing:.16em;color:var(--orange)}
+.form-dialog-header h2{margin:0;color:var(--green);font-size:1.45rem}
+.form-close{width:44px;height:44px;border:0;border-radius:50%;display:grid;place-items:center;background:#eef2f0;color:var(--green);font-size:2rem;line-height:1;cursor:pointer}
+.form-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 18px;background:#fff;border-bottom:1px solid var(--border)}
+.form-tab{min-height:44px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--green);font-weight:700;cursor:pointer}
+.form-tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.form-frame-wrap{position:relative;flex:1;min-height:0;background:#f3f5f4}
+#registration-frame{display:block;width:100%;height:100%;border:0;background:#fff;opacity:0;transition:opacity .2s ease}
+#registration-frame.loaded{opacity:1}
+.form-loading{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--green);font-weight:700;background:#f3f5f4}
+.form-loading.hidden{display:none}
+.loading-spinner{width:42px;height:42px;border:4px solid #dce5e1;border-top-color:var(--orange);border-radius:50%;animation:wfl-spin .8s linear infinite}
+@keyframes wfl-spin{to{transform:rotate(360deg)}}
+.form-dialog-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 22px;background:#fff;border-top:1px solid var(--border);font-size:.86rem}
+.form-dialog-footer p{margin:0;color:var(--muted)}
+.form-dialog-footer a{color:var(--green);font-weight:700}
+@media(max-width:980px){.registration-actions-three{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .form-modal{padding:0}
+  .form-dialog{width:100%;height:100svh;border-radius:0;border:0}
+  .form-dialog-header{padding:13px 16px 10px}
+  .form-dialog-header h2{font-size:1.18rem}
+  .form-close{width:40px;height:40px}
+  .form-tabs{padding:9px 10px;gap:6px}
+  .form-tab{font-size:.88rem;padding:7px 5px}
+  .form-dialog-footer{padding:9px 14px}
+  .form-dialog-footer p{display:none}
+  .form-dialog-footer a{margin-left:auto}
+}
