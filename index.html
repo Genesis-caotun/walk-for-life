@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <meta name="wfl-api-url" content="https://script.google.com/macros/s/AKfycbzn7OuVpu072gsCGnmEF2qBs8uZLlFrAStnBlTUTHIc-34xmcqWT9v8K2_mCxRIxBUB/exec">
 </head>
 <body>
   <header class="site-header">
@@ -246,7 +247,7 @@
 
   <div class="form-modal" id="form-modal" aria-hidden="true">
     <div class="form-modal-backdrop" data-close-form></div>
-    <section class="form-dialog" role="dialog" aria-modal="true" aria-labelledby="form-dialog-title">
+    <section class="form-dialog form-dialog-native" role="dialog" aria-modal="true" aria-labelledby="form-dialog-title">
       <header class="form-dialog-header">
         <div>
           <p class="form-dialog-kicker">WALK FOR LIFE 2026</p>
@@ -259,25 +260,83 @@
         <button type="button" class="form-tab" data-form-tab="group">團體報名</button>
         <button type="button" class="form-tab" data-form-tab="payment">付款回報</button>
       </nav>
-      <div class="form-frame-wrap">
-        <div class="form-loading" id="form-loading" aria-live="polite">
-          <span class="loading-spinner" aria-hidden="true"></span>
-          <span>正在載入報名系統…</span>
-        </div>
-        <iframe
-          id="registration-frame"
-          title="Walk for Life 線上表單"
-          data-personal-url="https://docs.google.com/forms/d/e/1FAIpQLSf2MEMJPyvQQ2MrFDIudr1F0lkMKvbkV_Klo8s6--aDYY1xgQ/viewform?embedded=true"
-          data-group-url="https://docs.google.com/forms/d/e/1FAIpQLSdU15Rg-mDF7AaYn879kuTdbYm92nQc4qrkjvJgJQuPHpEjZA/viewform?embedded=true"
-          data-payment-url="https://docs.google.com/forms/d/1CRFukkB94ts6Eh_-Sh0KMppnV8pkFx6jRYonje7ix2c/viewform?embedded=true"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
+
+      <div class="native-form-shell">
+        <div class="form-progress" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div id="form-alert" class="form-alert" role="alert" hidden></div>
+
+        <form id="personal-form" class="native-form active" data-form-type="personal">
+          <div class="form-intro"><h3>個人報名</h3><p>填寫完成後，系統會立即產生報名編號並寄送付款資訊。</p></div>
+          <div class="field-grid two-col">
+            <label class="field"><span>姓名 *</span><input name="name" required autocomplete="name"></label>
+            <label class="field"><span>性別 *</span><select name="gender" required><option value="">請選擇</option><option>男</option><option>女</option><option>其他／不透露</option></select></label>
+            <label class="field"><span>出生年月日 *</span><input type="date" name="birthDate" required></label>
+            <label class="field"><span>手機號碼／電話 *</span><input name="phone" required inputmode="tel" autocomplete="tel"></label>
+            <label class="field full"><span>電子郵件 *</span><input type="email" name="email" required autocomplete="email"></label>
+            <label class="field full"><span>收件地址 *</span><input name="address" required autocomplete="street-address"></label>
+          </div>
+          <fieldset class="choice-field"><legend>報名方案 *</legend>
+            <label class="choice-card"><input type="radio" name="plan" value="公益響應組300元" required><span><strong>公益響應組</strong><small>NT$ 300｜電子號碼布、電子完賽證書、抽獎資格</small></span></label>
+            <label class="choice-card"><input type="radio" name="plan" value="守護完賽組600元" required><span><strong>守護完賽組</strong><small>NT$ 600｜含實體完賽獎牌及企業優惠或贈品</small></span></label>
+          </fieldset>
+          <div class="field-grid two-col">
+            <label class="field"><span>是否需要捐款收據</span><select name="receipt"><option>不需要</option><option>需要</option></select></label>
+            <label class="field"><span>收據抬頭</span><input name="receiptTitle" placeholder="需要收據時填寫"></label>
+            <label class="field full"><span>其他備註</span><textarea name="note" rows="3"></textarea></label>
+          </div>
+          <label class="consent"><input type="checkbox" name="newsConsent" value="是"><span>我願意收到創世基金會草屯院最新活動資訊</span></label>
+          <label class="consent"><input type="checkbox" required><span>我確認資料正確，並同意本次報名、聯繫、寄送及行政作業使用相關資料。</span></label>
+          <button class="btn btn-primary submit-button" type="submit">送出個人報名</button>
+        </form>
+
+        <form id="group-form" class="native-form" data-form-type="group">
+          <div class="form-intro"><h3>團體報名</h3><p>團體名冊可直接上傳 Excel，不需登入 Google 帳號。建議檔案小於 5MB。</p></div>
+          <div class="field-grid two-col">
+            <label class="field full"><span>團體名稱 *</span><input name="groupName" required></label>
+            <label class="field"><span>團體類型 *</span><select name="groupType" required><option value="">請選擇</option><option>企業</option><option>學校</option><option>社區／社團</option><option>家庭親友</option><option>其他</option></select></label>
+            <label class="field"><span>團體聯絡人姓名 *</span><input name="contactName" required></label>
+            <label class="field"><span>聯絡電話 *</span><input name="phone" required inputmode="tel"></label>
+            <label class="field"><span>電子郵件 *</span><input type="email" name="email" required></label>
+            <label class="field full"><span>統一收件地址 *</span><input name="address" required></label>
+            <label class="field"><span>團體人數 *</span><input type="number" min="1" name="groupPeople" required></label>
+            <label class="field"><span>公益響應組 300 元人數 *</span><input type="number" min="0" value="0" name="plan300People" required></label>
+            <label class="field"><span>守護完賽組 600 元人數 *</span><input type="number" min="0" value="0" name="plan600People" required></label>
+            <label class="field"><span>是否需要捐款收據</span><select name="receipt"><option>不需要</option><option>需要</option></select></label>
+            <label class="field full"><span>收據抬頭</span><input name="receiptTitle"></label>
+            <label class="field full"><span>團體名冊 Excel *</span><input type="file" name="roster" accept=".xlsx,.xls,.ods" required><small>欄位至少需包含：姓名、電子郵件、手機號碼、性別、出生年份、報名方案。</small></label>
+            <label class="field full"><span>備註</span><textarea name="note" rows="3"></textarea></label>
+          </div>
+          <label class="consent"><input type="checkbox" required><span>我確認以上資料及上傳名冊內容正確，並同意本次報名、聯繫、寄送及行政作業使用相關資料。</span></label>
+          <button class="btn btn-primary submit-button" type="submit">送出團體報名</button>
+        </form>
+
+        <form id="payment-form" class="native-form" data-form-type="payment">
+          <div class="form-intro"><h3>付款回報</h3><p>請輸入報名後收到的個人或團體編號，每次回報一組編號。</p></div>
+          <div class="field-grid two-col">
+            <label class="field"><span>報名編號 *</span><input name="registrationId" required placeholder="WFL260001 或 WFLG26001"></label>
+            <label class="field"><span>付款人姓名／匯款戶名 *</span><input name="payerName" required></label>
+            <label class="field"><span>付款方式 *</span><select name="paymentMethod" required><option value="">請選擇</option><option>銀行轉帳</option><option>郵政劃撥</option><option>信用卡</option><option>現場繳費</option><option>其他</option></select></label>
+            <label class="field"><span>實際付款日期 *</span><input type="date" name="paymentDate" required></label>
+            <label class="field"><span>實際付款總金額 *</span><input type="number" min="1" name="amount" required></label>
+            <label class="field"><span>帳號末五碼／信用卡訂單編號</span><input name="referenceNumber"></label>
+            <label class="field full"><span>聯絡電話 *</span><input name="phone" required inputmode="tel"></label>
+          </div>
+          <button class="btn btn-primary submit-button" type="submit">送出付款回報</button>
+        </form>
+
+        <section id="form-success" class="form-success" hidden>
+          <div class="success-mark">✓</div>
+          <p class="section-label">SUBMITTED</p>
+          <h3 id="success-title">資料已送出</h3>
+          <p id="success-message"></p>
+          <div id="success-id-wrap" class="success-id-wrap" hidden><span>您的報名編號</span><strong id="success-id"></strong></div>
+          <div class="success-actions">
+            <a href="https://www.genesis.org.tw/" target="_blank" rel="noopener" class="btn btn-primary">前往官網信用卡付款</a>
+            <button type="button" class="btn btn-outline" id="success-payment-button">填寫付款回報</button>
+            <button type="button" class="btn btn-secondary" data-close-form>返回網站</button>
+          </div>
+        </section>
       </div>
-      <footer class="form-dialog-footer">
-        <p>表單無法顯示時，可在新視窗開啟。</p>
-        <a id="external-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSf2MEMJPyvQQ2MrFDIudr1F0lkMKvbkV_Klo8s6--aDYY1xgQ/viewform?usp=header" target="_blank" rel="noopener">在新視窗開啟</a>
-      </footer>
     </section>
   </div>
 
