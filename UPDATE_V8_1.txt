@@ -1,0 +1,17 @@
+Walk for Life 官網 v8.1 修正內容
+
+1. 修正個人報名、團體報名同時顯示。
+2. 修正表單欄位仍顯示瀏覽器預設樣式。
+3. 使用 styles-v81.css 與 script-v81.js 新檔名，避開 GitHub Pages 與瀏覽器快取。
+4. 電腦版重新整理為雙欄表單；手機版自動改為單欄。
+5. 改善輸入框、方案卡片、同意條款、上傳欄位與送出按鈕樣式。
+
+上傳方式：
+請將本壓縮檔全部解壓縮，至少覆蓋／新增：
+- index.html
+- styles-v81.css
+- script-v81.js
+
+注意：
+index.html 內的 wfl-api-url 目前仍保留原壓縮檔中的設定。
+若仍是 PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE，請重新貼入 Apps Script 的 /exec 網址。

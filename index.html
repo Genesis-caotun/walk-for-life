@@ -8,8 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-v82.css" />
   <meta name="wfl-api-url" content="https://script.google.com/macros/s/AKfycbzn7OuVpu072gsCGnmEF2qBs8uZLlFrAStnBlTUTHIc-34xmcqWT9v8K2_mCxRIxBUB/exec">
+
+  <style id="wfl-v81-critical">
+    [hidden]{display:none!important}
+    .native-form:not(.active){display:none!important}
+    .native-form.active{display:block!important}
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -289,8 +295,21 @@
           <button class="btn btn-primary submit-button" type="submit">送出個人報名</button>
         </form>
 
-        <form id="group-form" class="native-form" data-form-type="group">
-          <div class="form-intro"><h3>團體報名</h3><p>團體名冊可直接上傳 Excel，不需登入 Google 帳號。建議檔案小於 5MB。</p></div>
+        <form id="group-form" class="native-form" data-form-type="group" hidden>
+          <div class="form-intro group-intro">
+            <div>
+              <h3>團體報名</h3>
+              <p>請先下載團體名冊範本，填寫完成後再於下方上傳 Excel。不需登入 Google 帳號，建議檔案小於 5MB。</p>
+            </div>
+            <div class="roster-template-actions">
+              <a class="roster-download-button" href="https://drive.google.com/uc?export=download&id=1ES9g1LrzIzrkebXJdkesbh5rgnj9HEx0" target="_blank" rel="noopener">
+                下載 Excel 名冊範本
+              </a>
+              <a class="roster-cloud-button" href="https://docs.google.com/spreadsheets/d/1ES9g1LrzIzrkebXJdkesbh5rgnj9HEx0/edit?usp=drive_link&ouid=116563358116438296194&rtpof=true&sd=true" target="_blank" rel="noopener">
+                在雲端開啟
+              </a>
+            </div>
+          </div>
           <div class="field-grid two-col">
             <label class="field full"><span>團體名稱 *</span><input name="groupName" required></label>
             <label class="field"><span>團體類型 *</span><select name="groupType" required><option value="">請選擇</option><option>企業</option><option>學校</option><option>社區／社團</option><option>家庭親友</option><option>其他</option></select></label>
@@ -303,14 +322,18 @@
             <label class="field"><span>守護完賽組 600 元人數 *</span><input type="number" min="0" value="0" name="plan600People" required></label>
             <label class="field"><span>是否需要捐款收據</span><select name="receipt"><option>不需要</option><option>需要</option></select></label>
             <label class="field full"><span>收據抬頭</span><input name="receiptTitle"></label>
-            <label class="field full"><span>團體名冊 Excel *</span><input type="file" name="roster" accept=".xlsx,.xls,.ods" required><small>欄位至少需包含：姓名、電子郵件、手機號碼、性別、出生年份、報名方案。</small></label>
+            <label class="field full roster-upload-field">
+              <span>團體名冊 Excel *</span>
+              <input type="file" name="roster" accept=".xlsx,.xls,.ods" required>
+              <small>請使用上方範本填寫。必要欄位：姓名、電子郵件、手機號碼、性別、出生年份、報名方案。</small>
+            </label>
             <label class="field full"><span>備註</span><textarea name="note" rows="3"></textarea></label>
           </div>
           <label class="consent"><input type="checkbox" required><span>我確認以上資料及上傳名冊內容正確，並同意本次報名、聯繫、寄送及行政作業使用相關資料。</span></label>
           <button class="btn btn-primary submit-button" type="submit">送出團體報名</button>
         </form>
 
-        <form id="payment-form" class="native-form" data-form-type="payment">
+        <form id="payment-form" class="native-form" data-form-type="payment" hidden>
           <div class="form-intro"><h3>付款回報</h3><p>請輸入報名後收到的個人或團體編號，每次回報一組編號。</p></div>
           <div class="field-grid two-col">
             <label class="field"><span>報名編號 *</span><input name="registrationId" required placeholder="WFL260001 或 WFLG26001"></label>
@@ -358,6 +381,6 @@
     <p class="copyright">© 2026 Genesis Social Welfare Foundation · Caotun</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script-v81.js"></script>
 </body>
 </html>

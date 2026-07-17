@@ -1,0 +1,13 @@
+Walk for Life 官網 v8.2 雲端名冊版
+
+新增：
+1. 團體報名「下載 Excel 名冊範本」按鈕
+2. 團體報名「在雲端開啟」按鈕
+3. 使用指定的 Google Drive 雲端名冊範本
+4. 手機版按鈕自動滿版
+5. 使用 styles-v82.css 避免舊版快取
+
+請上傳：
+- index.html
+- styles-v82.css
+其餘檔案可保留原版。
