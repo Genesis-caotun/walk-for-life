@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     modal.classList.add(
-      'is-open'
+      'open'
     );
 
     document.body.style.overflow =
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     modal.classList.remove(
-      'is-open'
+      'open'
     );
 
     document.body.style.overflow =
