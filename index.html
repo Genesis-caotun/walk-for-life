@@ -20,11 +20,29 @@
   <link rel="stylesheet" href="styles-v86.css" />
   <meta name="wfl-api-url" content="https://script.google.com/macros/s/AKfycbzn7OuVpu072gsCGnmEF2qBs8uZLlFrAStnBlTUTHIc-34xmcqWT9v8K2_mCxRIxBUB/exec">
 
-  <style id="wfl-v81-critical">
-    [hidden]{display:none!important}
-    .native-form:not(.active){display:none!important}
-    .native-form.active{display:block!important}
-  </style>
+<style id="wfl-v81-critical">
+  [hidden]{display:none!important}
+
+  .native-form:not(.active){
+    display:none!important;
+  }
+
+  .native-form.active{
+    display:block!important;
+  }
+
+  /* 完賽回報視窗 */
+  #finish-modal[aria-hidden="true"]{
+    display:none!important;
+  }
+
+  #finish-modal[aria-hidden="false"]{
+    display:flex!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+</style>
 </head>
 <body>
   <header class="site-header">
