@@ -204,6 +204,30 @@
       </div>
     </section>
 
+<section id="finish" class="section section-light">
+  <div class="container narrow">
+    <p class="section-label">FINISH SUBMISSION</p>
+    <h2 class="section-title">完成 3 公里了嗎？</h2>
+
+    <p class="lead">
+      完成 Walk for Life 3 公里挑戰後，
+      請上傳手機、運動手錶或運動 App 的距離紀錄截圖。
+    </p>
+
+    <div class="registration-status-notice" role="note">
+      <strong>送出後將由工作人員進行完賽審核</strong>
+      <span>系統會依報名編號自動核對姓名與付款狀態，不需要再次填寫姓名。</span>
+    </div>
+
+    <p style="margin-top:24px;">
+      <button type="button"
+              class="btn btn-primary"
+              data-open-finish>
+        上傳完賽紀錄
+      </button>
+    </p>
+  </div>
+</section>
     <section id="exhibition" class="section section-story">
       <div class="container split">
         <div class="story-copy">
@@ -443,6 +467,200 @@
     </section>
   </div>
 
+<div class="form-modal" id="finish-modal" aria-hidden="true">
+
+  <div class="form-modal-backdrop" data-close-finish></div>
+
+  <section class="form-dialog form-dialog-native"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="finish-dialog-title">
+
+    <header class="form-dialog-header">
+
+      <div>
+        <p class="form-dialog-kicker">WALK FOR LIFE 2026</p>
+        <h2 id="finish-dialog-title">完賽紀錄上傳</h2>
+      </div>
+
+      <button type="button"
+              class="form-close"
+              aria-label="關閉完賽回報視窗"
+              data-close-finish>
+        ×
+      </button>
+
+    </header>
+
+
+    <div class="native-form-shell">
+
+      <div id="finish-alert"
+           class="form-alert"
+           role="alert"
+           hidden>
+      </div>
+
+
+      <form id="finish-form">
+
+        <div class="form-intro">
+
+          <h3>3 公里完賽回報</h3>
+
+          <p>
+            輸入電子號碼布上的報名編號或號碼布，
+            系統會自動核對報名資料。
+          </p>
+
+        </div>
+
+
+        <div class="field-grid two-col">
+
+          <label class="field full">
+
+            <span>報名編號／號碼布 *</span>
+
+            <input
+              name="registrationId"
+              id="finish-registration-id"
+              required
+              maxlength="30"
+              autocomplete="off"
+              placeholder="例如 WFL260001">
+
+            <small>
+              個人請輸入報名編號；團體參加者可輸入個人號碼布。
+            </small>
+
+          </label>
+
+
+          <label class="field">
+
+            <span>完成日期 *</span>
+
+            <input
+              type="date"
+              name="finishDate"
+              required>
+
+          </label>
+
+
+          <label class="field">
+
+            <span>完成公里數 *</span>
+
+            <input
+              type="number"
+              name="distance"
+              required
+              min="3"
+              max="999"
+              step="0.01"
+              inputmode="decimal"
+              placeholder="例如 3.25">
+
+          </label>
+
+
+          <label class="field full">
+
+            <span>運動紀錄截圖 *</span>
+
+            <input
+              type="file"
+              name="finishImage"
+              required
+              accept="image/jpeg,image/png,image/webp">
+
+            <small>
+              可上傳手機、運動手錶或運動 App 截圖。
+              JPG、PNG、WEBP，檔案上限 5MB。
+            </small>
+
+          </label>
+
+
+          <label class="field full">
+
+            <span>備註</span>
+
+            <textarea
+              name="note"
+              rows="3"
+              maxlength="500"
+              placeholder="若為分次累積或有其他說明，可填寫於此">
+            </textarea>
+
+          </label>
+
+        </div>
+
+
+        <label class="consent">
+
+          <input
+            type="checkbox"
+            name="finishConfirm"
+            required>
+
+          <span>
+            我確認上傳資料為本人之活動完賽紀錄，並同意供本活動完賽審核使用。
+          </span>
+
+        </label>
+
+
+        <button
+          class="btn btn-primary submit-button"
+          id="finish-submit-button"
+          type="submit">
+
+          送出完賽紀錄
+
+        </button>
+
+      </form>
+
+
+      <section id="finish-success"
+               class="form-success"
+               hidden>
+
+        <div class="success-mark">✓</div>
+
+        <p class="section-label">
+          FINISH SUBMITTED
+        </p>
+
+        <h3>完賽紀錄已送出</h3>
+
+        <p id="finish-success-message">
+          我們已收到您的完賽紀錄，工作人員將進行審核。
+        </p>
+
+        <div class="success-actions">
+
+          <button type="button"
+                  class="btn btn-primary"
+                  data-close-finish>
+
+            返回網站
+
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </section>
+
+</div>
   <footer>
     <div class="container footer-grid">
       <div>
@@ -463,5 +681,6 @@
   </footer>
 
   <script src="script-v86.js"></script>
+<script src="finish-v1.js"></script>
 </body>
 </html>
