@@ -179,6 +179,14 @@
     .group-members-heading{align-items:flex-start;flex-direction:column;}
   }
 
+
+  .payment-success-note{
+    width:100%;
+    margin:0 0 14px;
+    color:#5f6b66;
+    font-size:14px;
+    line-height:1.7;
+  }
 </style>
 </head>
 <body>
@@ -636,6 +644,9 @@
 
           <!-- 付款回報成功後 -->
           <div class="success-actions success-actions-payment">
+            <p class="payment-success-note">
+              付款資料送出後，請等待工作人員完成對帳確認；確認完成後即可上傳完賽紀錄。
+            </p>
             <button type="button" class="btn btn-primary" data-close-form data-open-finish>上傳完賽紀錄</button>
             <a href="./" class="btn btn-secondary">回到首頁</a>
           </div>
@@ -858,6 +869,7 @@
 
   <script src="script-v86.js"></script>
 <script src="group-v2.js"></script>
+<script src="form-fixes-v1.js"></script>
 <script src="finish-v1.js"></script>
 </body>
 </html>
