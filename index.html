@@ -68,6 +68,117 @@
       white-space:normal;
     }
   }
+
+
+  /* 團體報名 V2：網站直接新增成員 */
+  .group-members-section{
+    margin-top:28px;
+    padding-top:24px;
+    border-top:1px solid rgba(23,76,70,.16);
+  }
+  .group-members-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:16px;
+    margin-bottom:14px;
+  }
+  .group-members-heading h4{
+    margin:0 0 5px;
+    font-size:20px;
+    color:#174c46;
+  }
+  .group-members-heading p{
+    margin:0;
+    color:#68706c;
+    font-size:14px;
+  }
+  .group-member-summary{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+    margin:16px 0 20px;
+  }
+  .group-summary-item{
+    background:#f7f3e8;
+    border:1px solid rgba(23,76,70,.12);
+    border-radius:14px;
+    padding:13px 14px;
+  }
+  .group-summary-item span{
+    display:block;
+    color:#747a75;
+    font-size:12px;
+    margin-bottom:3px;
+  }
+  .group-summary-item strong{
+    display:block;
+    color:#174c46;
+    font-size:18px;
+  }
+  .group-member-card{
+    background:#fff;
+    border:1px solid rgba(23,76,70,.16);
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:14px;
+    box-shadow:0 5px 18px rgba(25,55,48,.05);
+  }
+  .group-member-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+  }
+  .group-member-kicker{
+    display:block;
+    font-family:Montserrat,sans-serif;
+    font-size:10px;
+    letter-spacing:.16em;
+    color:#9a7a43;
+    margin-bottom:2px;
+  }
+  .group-member-card-header h4{
+    margin:0;
+    color:#174c46;
+    font-size:18px;
+  }
+  .group-member-remove{
+    border:0;
+    background:transparent;
+    color:#9b4a41;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:6px;
+    font:inherit;
+    font-size:13px;
+  }
+  .group-member-fields{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+  .group-add-member-row{
+    display:flex;
+    justify-content:center;
+    margin:18px 0 24px;
+  }
+  .group-add-member-button{
+    min-width:210px;
+  }
+  .group-members-note{
+    font-size:13px;
+    color:#68706c;
+    line-height:1.7;
+    margin:0 0 16px;
+  }
+  @media (max-width:700px){
+    .group-member-summary{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .group-member-fields{grid-template-columns:1fr;}
+    .group-members-heading{align-items:flex-start;flex-direction:column;}
+  }
+
 </style>
 </head>
 <body>
@@ -374,14 +485,14 @@
         <ol>
           <li><strong>蒐集單位：</strong>財團法人創世社會福利基金會（承辦單位：草屯分院）。</li>
           <li><strong>蒐集目的：</strong>活動報名管理、身分與聯絡確認、報名費或捐款之對帳、開立捐款收據、物資或獎牌寄送、參加者服務、活動通知、客服及申訴處理、活動成果統計分析、公益宣導及依法令辦理相關行政與會計作業。</li>
-          <li><strong>蒐集資料類別：</strong>姓名、性別、出生日期或年份、電話、電子郵件、地址、團體或機構資訊、報名方案、收據資料、付款日期／方式／金額／識別碼、備註，以及後續完賽審核所需的運動紀錄。團體報名另包含名冊成員資料。</li>
+          <li><strong>蒐集資料類別：</strong>姓名、性別、出生日期或年份、電話、電子郵件、地址、團體或機構資訊、報名方案、收據資料、付款日期／方式／金額／識別碼、備註，以及後續完賽審核所需的運動紀錄。團體報名另包含團體成員姓名、電子郵件、出生年份及報名方案；其中成員電子郵件與出生年份為非必填資料。</li>
           <li><strong>利用期間：</strong>活動辦理期間及完成報名、對帳、寄送、客服、會計與法令保存義務所必要期間；目的消失或保存期限屆滿後，將依法刪除、停止利用或去識別化。</li>
           <li><strong>利用地區：</strong>中華民國境內，以及本會所使用之 Google 雲端服務依法提供資料處理與備援的地區。</li>
           <li><strong>利用對象：</strong>本會及經授權之工作人員、必要之資訊／雲端、寄送、會計或付款協力單位，以及依法有權調取資料之機關。</li>
           <li><strong>利用方式：</strong>以網站、電子郵件、電話、通訊軟體、紙本、雲端系統及郵寄等自動化或非自動化方式處理與利用。</li>
           <li><strong>您的權利：</strong>您得依《個人資料保護法》第3條規定，行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用，以及請求刪除等權利。請洽草屯分院，電話 049-2551119，或寄信至 VB3772@ms.genesis.org.tw。</li>
           <li><strong>不提供資料之影響：</strong>您可自由選擇是否提供；若未提供報名必填資料，本會可能無法完成報名、對帳、收據、寄送或後續聯繫。</li>
-          <li><strong>團體報名特別說明：</strong>團體聯絡人上傳其他成員資料前，應先完成必要告知並取得合法同意或授權；請勿上傳本活動不需要的敏感資料。</li>
+          <li><strong>團體報名特別說明：</strong>團體聯絡人填寫其他成員資料前，應先完成必要告知並取得合法同意或授權；請勿填寫本活動不需要的敏感資料。</li>
         </ol>
         <p class="privacy-note">本網站不會要求您在 GitHub Pages 頁面輸入信用卡卡號；信用卡付款仍由創世基金會官方捐款頁面處理。</p>
         <div class="privacy-actions">
@@ -443,41 +554,54 @@
           <div class="form-intro group-intro">
             <div>
               <h3>團體報名</h3>
-              <p>請先下載團體名冊範本，填寫完成後再於下方上傳 Excel。不需登入 Google 帳號，建議檔案小於 5MB。</p>
-            </div>
-            <div class="roster-template-actions">
-              <a class="roster-download-button" href="https://drive.google.com/uc?export=download&id=198jYZXOjcY2Z8ZA8PMx9drywLgqYKy0x" target="_blank" rel="noopener">
-                下載 Excel 名冊範本
-              </a>
-              <a class="roster-cloud-button" href="https://docs.google.com/spreadsheets/d/198jYZXOjcY2Z8ZA8PMx9drywLgqYKy0x/edit?usp=drive_link&ouid=116563358116438296194&rtpof=true&sd=true" target="_blank" rel="noopener">
-                在雲端開啟
-              </a>
+              <p>先填寫團體聯絡資料，再於下方逐位新增成員。系統會自動計算團體人數、各方案人數及應繳總額，不需另外上傳 Excel 名冊。</p>
             </div>
           </div>
+
           <div class="field-grid two-col">
             <label class="field full"><span>團體名稱 *</span><input name="groupName" required maxlength="100"></label>
             <label class="field"><span>團體類型 *</span><select name="groupType" required><option value="">請選擇</option><option>企業</option><option>學校</option><option>社區／社團</option><option>家庭親友</option><option>其他</option></select></label>
-            <label class="field"><span>團體聯絡人姓名 *</span><input name="contactName" required maxlength="50"></label>
-            <label class="field"><span>聯絡電話 *</span><input name="phone" required maxlength="20" inputmode="tel" pattern="[0-9+()\- ]{7,20}"></label>
-            <label class="field"><span>電子郵件 *</span><input type="email" name="email" required maxlength="120"></label>
-            <label class="field full"><span>統一收件地址 *</span><input name="address" required maxlength="200"></label>
-            <label class="field"><span>團體人數 *</span><input type="number" min="1" max="500" name="groupPeople" required></label>
-            <label class="field"><span>公益響應組 300 元人數 *</span><input type="number" min="0" max="500" value="0" name="plan300People" required></label>
-            <label class="field"><span>守護完賽組 600 元人數 *</span><input type="number" min="0" max="500" value="0" name="plan600People" required></label>
+            <label class="field"><span>團體聯絡人姓名 *</span><input name="contactName" required maxlength="50" autocomplete="name"></label>
+            <label class="field"><span>聯絡電話 *</span><input name="phone" required maxlength="20" inputmode="tel" autocomplete="tel" pattern="[0-9+()\- ]{7,20}"></label>
+            <label class="field"><span>聯絡人電子郵件 *</span><input type="email" name="email" required maxlength="120" autocomplete="email"></label>
+            <label class="field full"><span>統一收件地址 *</span><input name="address" required maxlength="200" autocomplete="street-address"></label>
+          </div>
+
+          <section class="group-members-section" aria-labelledby="group-members-title">
+            <div class="group-members-heading">
+              <div>
+                <h4 id="group-members-title">團體成員</h4>
+                <p>姓名與報名方案為必填；成員 Email、出生年份可依實際需要填寫。</p>
+              </div>
+            </div>
+
+            <div class="group-member-summary" aria-live="polite">
+              <div class="group-summary-item"><span>目前人數</span><strong><span id="group-member-count">1</span> 人</strong></div>
+              <div class="group-summary-item"><span>公益響應組</span><strong><span id="group-plan300-count">0</span> 人</strong></div>
+              <div class="group-summary-item"><span>守護完賽組</span><strong><span id="group-plan600-count">0</span> 人</strong></div>
+              <div class="group-summary-item"><span>應繳總額</span><strong id="group-total-amount">NT$ 0</strong></div>
+            </div>
+
+            <p class="group-members-note">成員 Email 若未填寫，該成員日後的完賽證書會改寄至團體聯絡人 Email。出生年份為選填，僅供活動參與統計使用。</p>
+
+            <div id="group-members"></div>
+
+            <div class="group-add-member-row">
+              <button type="button" class="btn btn-outline group-add-member-button" id="add-group-member">＋ 新增一位成員</button>
+            </div>
+          </section>
+
+          <div class="field-grid two-col">
             <label class="field"><span>是否需要捐款收據</span><select name="receipt"><option>不需要</option><option>需要</option></select></label>
-            <label class="field full"><span>收據抬頭</span><input name="receiptTitle" maxlength="100"></label>
-            <label class="field full roster-upload-field">
-              <span>團體名冊 Excel *</span>
-              <input type="file" name="roster" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
-              <small>請使用上方範本填寫。僅接受 .xlsx，檔案上限 5MB。必要欄位：姓名、電子郵件、手機號碼、性別、出生年份、報名方案。</small>
-            </label>
+            <label class="field"><span>收據抬頭</span><input name="receiptTitle" maxlength="100" placeholder="需要收據時填寫"></label>
             <label class="field full"><span>備註</span><textarea name="note" rows="3" maxlength="500"></textarea></label>
           </div>
+
           <div class="consent-row">
             <label class="consent"><input type="checkbox" name="privacyConsent" value="同意" required><span>我已閱讀並同意</span></label>
             <button type="button" class="privacy-link" data-open-privacy>個人資料蒐集、處理及利用告知事項</button>
           </div>
-          <p class="group-consent-note">團體聯絡人並確認：已向名冊內成員完成必要告知，並取得提供報名資料所需的同意或授權。</p>
+          <p class="group-consent-note">團體聯絡人並確認：已向上述成員完成必要告知，並取得提供報名資料所需的同意或授權。</p>
           <label class="hp-field" aria-hidden="true">請勿填寫<input name="website" tabindex="-1" autocomplete="off"></label>
           <button class="btn btn-primary submit-button" type="submit">送出團體報名</button>
         </form>
@@ -485,7 +609,7 @@
         <form id="payment-form" class="native-form" data-form-type="payment" hidden>
           <div class="form-intro"><h3>付款回報</h3><p>請輸入報名後收到的個人或團體編號，每次回報一組編號。</p></div>
           <div class="field-grid two-col">
-            <label class="field"><span>報名編號 *</span><input name="registrationId" required maxlength="16" pattern="WFLG?26[0-9]{4,6}" placeholder="WFL260001 或 WFLG26001"></label>
+            <label class="field"><span>報名編號 *</span><input name="registrationId" required maxlength="16" pattern="(?:WFL26[0-9]{4,6}|WFLG26[0-9]{4,6})" placeholder="WFL260001 或 WFLG260001"></label>
             <label class="field"><span>付款人姓名／匯款戶名 *</span><input name="payerName" required maxlength="50"></label>
             <label class="field"><span>付款方式 *</span><select name="paymentMethod" required><option value="">請選擇</option><option>銀行轉帳</option><option>郵政劃撥</option><option>信用卡</option><option>現場繳費</option><option>其他</option></select></label>
             <label class="field"><span>實際付款日期 *</span><input type="date" name="paymentDate" required></label>
@@ -733,6 +857,7 @@
   </footer>
 
   <script src="script-v86.js"></script>
+<script src="group-v2.js"></script>
 <script src="finish-v1.js"></script>
 </body>
 </html>
