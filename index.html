@@ -187,6 +187,14 @@
     font-size:14px;
     line-height:1.7;
   }
+
+  .price small{
+    font-size:.42em;
+    font-weight:600;
+    margin-left:4px;
+    vertical-align:middle;
+    white-space:nowrap;
+  }
 </style>
 </head>
 <body>
@@ -278,26 +286,26 @@
         <div class="plans">
           <article class="plan">
             <p class="plan-name">公益響應組</p>
-            <p class="price"><span>NT$</span>300</p>
+            <p class="price"><span>NT$</span>300<small>（報名費）</small></p>
             <ul class="benefit-list">
               <li class="included">電子號碼布</li>
               <li class="included">電子完賽證書</li>
-              <li class="excluded"><strong>不含</strong>實體完賽獎牌</li>
               <li class="included">完賽抽獎資格</li>
-              <li class="excluded"><strong>不含</strong>企業優惠或贈品</li>
+              <li class="included">創世感謝圖卡</li>
             </ul>
             <button type="button" class="btn btn-outline" data-open-form="personal">選擇 300 元方案</button>
           </article>
           <article class="plan featured">
             <span class="badge">主推方案</span>
             <p class="plan-name">守護完賽組</p>
-            <p class="price"><span>NT$</span>600</p>
+            <p class="price"><span>NT$</span>600<small>（報名費）</small></p>
             <ul class="benefit-list">
               <li class="included">電子號碼布</li>
               <li class="included">電子完賽證書</li>
               <li class="included">實體完賽獎牌</li>
               <li class="included">完賽抽獎資格</li>
-              <li class="included">企業優惠或贈品</li>
+              <li class="included">創世小贈品</li>
+              <li class="included">合作企業優惠或贈品</li>
             </ul>
             <button type="button" class="btn btn-primary" data-open-form="personal">選擇 600 元方案</button>
           </article>
@@ -448,7 +456,7 @@
         </details>
         <details>
           <summary>300 元和 600 元的差別是什麼？</summary>
-          <p>兩種方案皆含電子號碼布、電子完賽證書與完賽抽獎資格；600 元方案另含實體完賽獎牌及企業優惠或贈品。</p>
+          <p>公益響應組 300 元含電子號碼布、電子完賽證書、完賽抽獎資格及創世感謝圖卡；守護完賽組 600 元則含電子號碼布、電子完賽證書、實體完賽獎牌、完賽抽獎資格、創世小贈品及合作企業優惠或贈品。</p>
         </details>
         <details>
           <summary>獎牌如何領取？</summary>
@@ -541,8 +549,8 @@
             <label class="field full"><span>收件地址 *</span><input name="address" required maxlength="200" autocomplete="street-address"></label>
           </div>
           <fieldset class="choice-field"><legend>報名方案 *</legend>
-            <label class="choice-card"><input type="radio" name="plan" value="公益響應組300元" required><span><strong>公益響應組</strong><small>NT$ 300｜電子號碼布、電子完賽證書、抽獎資格；不含實體獎牌及企業優惠或贈品</small></span></label>
-            <label class="choice-card"><input type="radio" name="plan" value="守護完賽組600元" required><span><strong>守護完賽組</strong><small>NT$ 600｜電子號碼布、電子完賽證書、抽獎資格、實體完賽獎牌及企業優惠或贈品</small></span></label>
+            <label class="choice-card"><input type="radio" name="plan" value="公益響應組300元" required><span><strong>公益響應組</strong><small>NT$ 300（報名費）｜電子號碼布、電子完賽證書、完賽抽獎資格、創世感謝圖卡</small></span></label>
+            <label class="choice-card"><input type="radio" name="plan" value="守護完賽組600元" required><span><strong>守護完賽組</strong><small>NT$ 600（報名費）｜電子號碼布、電子完賽證書、實體完賽獎牌、完賽抽獎資格、創世小贈品、合作企業優惠或贈品</small></span></label>
           </fieldset>
           <div class="field-grid two-col">
             <label class="field"><span>是否需要捐款收據</span><select name="receipt"><option>不需要</option><option>需要</option></select></label>
