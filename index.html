@@ -42,6 +42,32 @@
     visibility:visible!important;
     pointer-events:auto!important;
   }
+
+  /* 付款回報成功頁：預設隱藏付款後操作 */
+  .success-actions-payment{
+    display:none;
+  }
+
+  /* 付款分頁送出成功時，改顯示完賽上傳／回首頁 */
+  #form-modal:has(.form-tab[data-form-tab="payment"].active) .success-actions-registration{
+    display:none;
+  }
+
+  #form-modal:has(.form-tab[data-form-tab="payment"].active) .success-actions-payment{
+    display:flex;
+  }
+
+  /* 故事展桌機維持單行，手機避免文字溢出 */
+  .story-nowrap{
+    white-space:nowrap;
+    font-size:18px;
+  }
+
+  @media (max-width:700px){
+    .story-nowrap{
+      white-space:normal;
+    }
+  }
 </style>
 </head>
 <body>
@@ -53,6 +79,7 @@
       <a href="#event">活動介紹</a>
       <a href="#plans">報名方案</a>
       <a href="#register">付款方式</a>
+      <a href="#finish">完賽上傳</a>
       <a href="#exhibition">故事展</a>
       <a href="#faq">常見問題</a>
       <a href="#partners">企業夥伴</a>
@@ -79,39 +106,35 @@
     </section>
 
     <section id="origin" class="section section-light">
-<div class="container narrow">
-<p class="section-label">BRAND STORY</p>
-<h2 class="section-title">為什麼，我們開始走？</h2>
+      <div class="container narrow">
+        <p class="section-label">BRAND STORY</p>
+        <h2 class="section-title">為什麼，我們開始走？</h2>
 
-<p>每天早晨，我們走向工作。放學時，牽著孩子一起回家。傍晚時，散步或運動。</p>
-<p>走路，對大多數人來說，是一件再平凡不過的事情。</p>
+        <p>每天早晨，我們走向工作。放學時，牽著孩子一起回家。傍晚時，散步或運動。</p>
+        <p>走路，對大多數人來說，是一件再平凡不過的事情。</p>
 
-<p>直到有一天，我們看見了植物人家庭。</p>
+        <p>直到有一天，我們看見了植物人家庭。</p>
 
-<p>照顧者每天起床，翻身、拍背、餵食、復健。日復一日，年復一年，不曾放棄...</p>
-<p><strong><p style="color: #228B22;">只是這條路，比我們想像的更漫長。<p style="color: #228B22;"></strong></p>
+        <p>照顧者每天起床，翻身、拍背、餵食、復健。日復一日，年復一年，不曾放棄...</p>
+        <p><strong style="color:#228B22;">只是這條路，比我們想像的更漫長。</strong></p>
 
-<p><strong><p style="color: #228B22;">他們無法再踏出腳步，但生命的故事，仍然持續著。<p style="color: #228B22;"></strong></p>
+        <p><strong style="color:#228B22;">他們無法再踏出腳步，但生命的故事，仍然持續著。</strong></p>
 
-<p>於是，我們開始思考，</p>
-<p>如果，每個人每天都會走路，那麼，能讓今天的每一步，<strong><p style="color: #228B22;">不只是為了自己，也成為另一個家庭的一份力量。<p style="color: #228B22;"></strong></p>
+        <p>於是，我們開始思考，</p>
+        <p>如果，每個人每天都會走路，那麼，能讓今天的每一步，<strong style="color:#228B22;">不只是為了自己，也成為另一個家庭的一份力量。</strong></p>
 
-<p>於是，<strong><p style="color: #228B22;">Walk for Life<p style="color: #228B22;"></strong> </p>
-<p><strong><p style="color: #228B22;">誕生了。<p style="color: #228B22;"></strong> </p>
-<p>一場為植物人家庭而走的公益活動，是一份同行的邀請。</p>
-<p>邀請每一位願意踏出腳步的人，把平凡的一步，化為植物人家庭的一份支持。</p>
+        <p>於是，<strong style="color:#228B22;">Walk for Life</strong></p>
+        <p><strong style="color:#228B22;">誕生了。</strong></p>
+        <p>一場為植物人家庭而走的公益活動，是一份同行的邀請。</p>
+        <p>邀請每一位願意踏出腳步的人，把平凡的一步，化為植物人家庭的一份支持。</p>
 
-<blockquote style="color:#174c46;border-left:4px solid #d98c3f;padding-left:20px;margin:40px 0;">
-因為，<br>有些人，不能再走。<br>
-有些人，仍在陪伴。<br>
-而我們，願意同行。
-</blockquote>
-
-<p></p>
-
-
-</div>
-</section>
+        <blockquote style="color:#174c46;border-left:4px solid #d98c3f;padding-left:20px;margin:40px 0;">
+          因為，<br>有些人，不能再走。<br>
+          有些人，仍在陪伴。<br>
+          而我們，願意同行。
+        </blockquote>
+      </div>
+    </section>
 
 <section id="event" class="section section-green">
       <div class="container split">
@@ -219,6 +242,11 @@
             <button type="button" class="btn btn-dark" data-open-form="payment">開啟付款回報</button>
           </article>
         </div>
+
+        <div class="registration-status-notice" role="note" style="margin-top:24px;">
+          <strong>付款回報後，請等待工作人員完成對帳</strong>
+          <span>對帳確認後，系統會寄送電子號碼布；完成 3 公里後，可掃描號碼布上的 QR Code 或由下方「完賽上傳」進行回報。</span>
+        </div>
       </div>
     </section>
 
@@ -234,7 +262,7 @@
 
     <div class="registration-status-notice" role="note">
       <strong>送出後將由工作人員進行完賽審核</strong>
-      <span>系統會依報名編號自動核對姓名與付款狀態，不需要再次填寫姓名。</span>
+      <span>系統會依報名編號自動核對姓名與付款狀態；審核通過後，電子完賽證書會寄至報名時填寫的 Email。</span>
     </div>
 
     <p style="margin-top:24px;">
@@ -251,8 +279,8 @@
         <div class="story-copy">
           <p class="section-label light">CARE STORY EXHIBITION</p>
           <h2 class="section-title light">一張床旁邊的距離</h2>
-          <p class="lead light" style="white-space:nowrap;font-size:18px;">植物人不能再走，但照顧者仍在每天前行。</p>
-          <p class="lead light" style="white-space:nowrap;font-size:18px;">照顧故事展將呈現安養、到宅服務與長期家庭的真實歷程。</p>
+          <p class="lead light story-nowrap">植物人不能再走，但照顧者仍在每天前行。</p>
+          <p class="lead light story-nowrap">照顧故事展將呈現安養、到宅服務與長期家庭的真實歷程。</p>
           
         </div>
         <blockquote>
@@ -395,7 +423,7 @@
           </div>
           <fieldset class="choice-field"><legend>報名方案 *</legend>
             <label class="choice-card"><input type="radio" name="plan" value="公益響應組300元" required><span><strong>公益響應組</strong><small>NT$ 300｜電子號碼布、電子完賽證書、抽獎資格；不含實體獎牌及企業優惠或贈品</small></span></label>
-            <label class="choice-card"><input type="radio" name="plan" value="守護完賽組600元" required><span><strong>守護完賽組</strong><small>NT$ 600｜含實體完賽獎牌及企業優惠或贈品</small></span></label>
+            <label class="choice-card"><input type="radio" name="plan" value="守護完賽組600元" required><span><strong>守護完賽組</strong><small>NT$ 600｜電子號碼布、電子完賽證書、抽獎資格、實體完賽獎牌及企業優惠或贈品</small></span></label>
           </fieldset>
           <div class="field-grid two-col">
             <label class="field"><span>是否需要捐款收據</span><select name="receipt"><option>不需要</option><option>需要</option></select></label>
@@ -475,10 +503,17 @@
           <h3 id="success-title">資料已送出</h3>
           <p id="success-message"></p>
           <div id="success-id-wrap" class="success-id-wrap" hidden><span>您的報名編號</span><strong id="success-id"></strong></div>
-          <div class="success-actions">
-            <a href="https://www.genesis.org.tw/" target="_blank" rel="noopener" class="btn btn-primary">前往官網信用卡付款</a>
+          <!-- 個人／團體報名成功後 -->
+          <div class="success-actions success-actions-registration">
+            <a href="https://www.genesis.org.tw/contents/project" target="_blank" rel="noopener" class="btn btn-primary">前往官網信用卡付款</a>
             <button type="button" class="btn btn-outline" id="success-payment-button">填寫付款回報</button>
             <button type="button" class="btn btn-secondary" data-close-form>返回網站</button>
+          </div>
+
+          <!-- 付款回報成功後 -->
+          <div class="success-actions success-actions-payment">
+            <button type="button" class="btn btn-primary" data-close-form data-open-finish>上傳完賽紀錄</button>
+            <a href="./" class="btn btn-secondary">回到首頁</a>
           </div>
         </section>
       </div>
@@ -610,8 +645,7 @@
               name="note"
               rows="3"
               maxlength="500"
-              placeholder="若為分次累積或有其他說明，可填寫於此">
-            </textarea>
+              placeholder="若為分次累積或有其他說明，可填寫於此"></textarea>
 
           </label>
 
@@ -657,7 +691,7 @@
         <h3>完賽紀錄已送出</h3>
 
         <p id="finish-success-message">
-          我們已收到您的完賽紀錄，工作人員將進行審核。
+          我們已收到您的完賽紀錄；審核通過後，電子完賽證書將寄至報名時填寫的 Email。
         </p>
 
         <div class="success-actions">
@@ -695,7 +729,7 @@
         <button type="button" class="footer-privacy-link" data-open-privacy>個人資料告知事項</button>
       </div>
     </div>
-    <p class="copyright">© 2026 Genesis Social Welfare Foundation · Caotun｜網站最後更新：2026/07/20</p>
+    <p class="copyright">© 2026 Genesis Social Welfare Foundation · Caotun｜網站最後更新：2026/09/09</p>
   </footer>
 
   <script src="script-v86.js"></script>
