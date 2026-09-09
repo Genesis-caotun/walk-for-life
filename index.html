@@ -609,7 +609,7 @@
         <form id="payment-form" class="native-form" data-form-type="payment" hidden>
           <div class="form-intro"><h3>付款回報</h3><p>請輸入報名後收到的個人或團體編號，每次回報一組編號。</p></div>
           <div class="field-grid two-col">
-            <label class="field"><span>報名編號 *</span><input name="registrationId" required maxlength="16" pattern="(?:WFL26[0-9]{4,6}|WFLG26[0-9]{4,6})" placeholder="WFL260001 或 WFLG260001"></label>
+            <label class="field"><span>報名編號 *</span><input name="registrationId" required maxlength="16" pattern="(?:WFL26[0-9]{4,6}|WFLG[0-9]{3})" placeholder="WFL260001 或 WFLG001"></label>
             <label class="field"><span>付款人姓名／匯款戶名 *</span><input name="payerName" required maxlength="50"></label>
             <label class="field"><span>付款方式 *</span><select name="paymentMethod" required><option value="">請選擇</option><option>銀行轉帳</option><option>郵政劃撥</option><option>信用卡</option><option>現場繳費</option><option>其他</option></select></label>
             <label class="field"><span>實際付款日期 *</span><input type="date" name="paymentDate" required></label>
