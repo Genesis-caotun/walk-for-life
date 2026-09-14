@@ -195,6 +195,21 @@
     vertical-align:middle;
     white-space:nowrap;
   }
+
+  /* 2026-09-14 修訂：對齊、付款回報及審核時程；待審閱後部署 */
+  .plans .plan { display:flex; flex-direction:column; border-width:2px; }
+  .plans .plan.featured { transform:none; }
+  .plans .plan > .btn { margin-top:auto; align-self:flex-start; }
+  .registration-card { display:flex; flex-direction:column; }
+  .registration-card > .btn { margin-top:auto; }
+  .steps { max-width:none; width:100%; }
+  .payment-grid .payment-card { padding-top:58px; border-width:2px; }
+  .payment-card .payment-tag { position:absolute; top:14px; right:18px; margin:0; }
+  .payment-card > h3 { margin-top:0; }
+  .plan-delivery-note { max-width:900px; margin:20px auto 0; color:var(--muted); }
+  .success-actions-registration-note { background:#fff5e7; padding:14px; border-radius:12px; }
+  #form-modal:has(.form-tab[data-form-tab="payment"].active) .success-actions-registration-note { display:none; }
+
 </style>
 </head>
 <body>
@@ -306,11 +321,12 @@
               <li class="included">實體完賽獎牌</li>
               <li class="included">完賽抽獎資格</li>
               <li class="included">創世小贈品</li>
-              <li class="included">合作企業優惠或贈品</li>
+              <li class="included">合作企業優惠或贈品（待確認）</li>
             </ul>
             <button type="button" class="btn btn-primary" data-open-form="personal">選擇 600 元方案</button>
           </article>
         </div>
+        <p class="plan-delivery-note">報名方案所含實體物資均含運費，不另收寄送費用。合作企業優惠或贈品尚待確認，確認後另行公告。</p>
       </div>
     </section>
 
@@ -321,7 +337,7 @@
         <div class="steps">
           <div class="step"><span>1</span><div><h3>選擇個人或團體報名</h3><p>填寫聯絡方式、參與方案與收據資料；挑戰距離統一為 3 公里。</p></div></div>
           <div class="step"><span>2</span><div><h3>選擇付款方式</h3><p>可使用信用卡、郵政劃撥或銀行匯款完成付款。</p></div></div>
-          <div class="step"><span>3</span><div><h3>保留付款紀錄</h3><p>信用卡請保留交易結果；劃撥或匯款請保留收據及帳號末五碼，以利人工對帳。</p></div></div>
+          <div class="step"><span>3</span><div><h3>保留付款紀錄</h3><p>信用卡請保留交易結果；劃撥或匯款請保留收據及帳號末五碼。所有付款方式（含信用卡）完成後，皆須回到本站填寫「付款回報」，以利人工對帳。</p></div></div>
         </div>
 
         <div class="registration-status-notice" role="note">
@@ -334,8 +350,8 @@
             <span class="payment-tag">線上付款</span>
             <h3>信用卡付款</h3>
             <p>前往創世基金會官方線上捐款頁面完成刷卡。</p>
-            <p class="payment-hint">付款時請於可填寫的備註欄留下報名編號與參加人姓名，方便人工核對。</p>
-            <a href="https://www.genesis.org.tw/contents/project" class="btn btn-primary payment-button" target="_blank" rel="noopener">前往信用卡付款</a>
+            <p class="payment-hint">付款時請於可填寫的備註欄留下報名編號與參加人姓名，方便人工核對。刷卡完成後，仍須回到本站填寫「付款回報」。</p>
+            <a href="https://www.genesis.org.tw/contents/project_ct?p_id=6718&amp;branch=111" class="btn btn-primary payment-button" target="_blank" rel="noopener">前往信用卡付款</a>
           </article>
           <article class="payment-card">
             <h3>郵政劃撥</h3>
@@ -366,14 +382,14 @@
           <article class="registration-card payment-report-card">
             <p class="registration-type">PAYMENT</p>
             <h3>付款回報</h3>
-            <p>已完成信用卡、劃撥或匯款者，請填寫付款資料。</p>
+            <p>已完成信用卡、劃撥或匯款者，皆須填寫付款資料；人工對帳暫定於資料齊全後約兩週內完成。</p>
             <button type="button" class="btn btn-dark" data-open-form="payment">開啟付款回報</button>
           </article>
         </div>
 
         <div class="registration-status-notice" role="note" style="margin-top:24px;">
           <strong>付款回報後，請等待工作人員完成對帳</strong>
-          <span>對帳確認後，系統會寄送電子號碼布；完成 3 公里後，可掃描號碼布上的 QR Code 或由下方「完賽上傳」進行回報。</span>
+          <span>人工對帳暫定於付款回報資料齊全後約兩週（14 個日曆天）內完成。對帳確認後，系統會寄送電子號碼布；完成 3 公里後，可掃描號碼布上的 QR Code 或由下方「完賽上傳」進行回報。</span>
         </div>
       </div>
     </section>
@@ -390,7 +406,7 @@
 
     <div class="registration-status-notice" role="note">
       <strong>送出後將由工作人員進行完賽審核</strong>
-      <span>系統會依報名編號自動核對姓名與付款狀態；審核通過後，電子完賽證書會寄至報名時填寫的 Email。</span>
+      <span>系統會依報名編號自動核對姓名與付款狀態；人工完賽審核暫定於資料齊全後約兩週（14 個日曆天）內完成。審核通過後，電子完賽證書會寄至報名時填寫的 Email。</span>
     </div>
 
     <p style="margin-top:24px;">
@@ -457,11 +473,11 @@
         </details>
         <details>
           <summary>300 元和 600 元的差別是什麼？</summary>
-          <p>公益響應組 300 元含電子號碼布、電子完賽證書、完賽抽獎資格及創世感謝圖卡；守護完賽組 600 元則含電子號碼布、電子完賽證書、實體完賽獎牌、完賽抽獎資格、創世小贈品及合作企業優惠或贈品。</p>
+          <p>公益響應組 300 元含電子號碼布、電子完賽證書、完賽抽獎資格及創世感謝圖卡；守護完賽組 600 元則含電子號碼布、電子完賽證書、實體完賽獎牌、完賽抽獎資格、創世小贈品及合作企業優惠或贈品（待確認）。</p>
         </details>
         <details>
           <summary>獎牌如何領取？</summary>
-          <p>完成挑戰並通過審核後，依活動公告採統一寄送或指定地點自取。</p>
+          <p>完成挑戰並通過審核後，依活動公告採統一寄送或指定地點自取。報名方案所含實體物資均含運費，不另收寄送費用；寄送及領取時間另行公告。</p>
         </details>
       </div>
     </section>
@@ -551,7 +567,7 @@
           </div>
           <fieldset class="choice-field"><legend>報名方案 *</legend>
             <label class="choice-card"><input type="radio" name="plan" value="公益響應組300元" required><span><strong>公益響應組</strong><small>NT$ 300（報名費）｜電子號碼布、電子完賽證書、完賽抽獎資格、創世感謝圖卡</small></span></label>
-            <label class="choice-card"><input type="radio" name="plan" value="守護完賽組600元" required><span><strong>守護完賽組</strong><small>NT$ 600（報名費）｜電子號碼布、電子完賽證書、實體完賽獎牌、完賽抽獎資格、創世小贈品、合作企業優惠或贈品</small></span></label>
+            <label class="choice-card"><input type="radio" name="plan" value="守護完賽組600元" required><span><strong>守護完賽組</strong><small>NT$ 600（報名費）｜電子號碼布、電子完賽證書、實體完賽獎牌、完賽抽獎資格、創世小贈品、合作企業優惠或贈品（待確認）</small></span></label>
           </fieldset>
           <div class="field-grid two-col">
             <label class="field"><span>是否需要捐款收據</span><select name="receipt"><option>不需要</option><option>需要</option></select></label>
@@ -624,6 +640,7 @@
         </form>
 
         <form id="payment-form" class="native-form" data-form-type="payment" hidden>
+          <p class="review-timing-note">信用卡付款後也須填寫本表；人工對帳暫定於資料齊全後約兩週內完成。</p>
           <div class="form-intro"><h3>付款回報</h3><p>請輸入報名後收到的個人或團體編號，每次回報一組編號。</p></div>
           <div class="field-grid two-col">
             <label class="field"><span>報名編號 *</span><input name="registrationId" required maxlength="16" pattern="(?:WFL26[0-9]{4,6}|WFLG[0-9]{3})" placeholder="WFL260001 或 WFLG001"></label>
@@ -645,8 +662,9 @@
           <p id="success-message"></p>
           <div id="success-id-wrap" class="success-id-wrap" hidden><span>您的報名編號</span><strong id="success-id"></strong></div>
           <!-- 個人／團體報名成功後 -->
+          <p class="success-actions-registration-note">信用卡付款完成後，請回到本站點選「填寫付款回報」。所有付款方式皆須完成回報，才能進行人工對帳。</p>
           <div class="success-actions success-actions-registration">
-            <a href="https://www.genesis.org.tw/contents/project" target="_blank" rel="noopener" class="btn btn-primary">前往官網信用卡付款</a>
+            <a href="https://www.genesis.org.tw/contents/project_ct?p_id=6718&amp;branch=111" target="_blank" rel="noopener" class="btn btn-primary">前往官網信用卡付款</a>
             <button type="button" class="btn btn-outline" id="success-payment-button">填寫付款回報</button>
             <button type="button" class="btn btn-secondary" data-close-form>返回網站</button>
           </div>
@@ -654,7 +672,7 @@
           <!-- 付款回報成功後 -->
           <div class="success-actions success-actions-payment">
             <p class="payment-success-note">
-              付款資料送出後，請等待工作人員完成對帳確認；確認完成後即可上傳完賽紀錄。
+              付款資料送出後，人工對帳暫定於資料齊全後約兩週（14 個日曆天）內完成；確認完成後即可上傳完賽紀錄。
             </p>
             <button type="button" class="btn btn-primary" data-close-form data-open-finish>上傳完賽紀錄</button>
             <a href="./" class="btn btn-secondary">回到首頁</a>
@@ -838,6 +856,7 @@
           我們已收到您的完賽紀錄；審核通過後，電子完賽證書將寄至報名時填寫的 Email。
         </p>
 
+        <p>人工完賽審核暫定於資料齊全後約兩週（14 個日曆天）內完成。</p>
         <div class="success-actions">
 
           <button type="button"
@@ -873,7 +892,7 @@
         <button type="button" class="footer-privacy-link" data-open-privacy>個人資料告知事項</button>
       </div>
     </div>
-    <p class="copyright">© 2026 Genesis Social Welfare Foundation · Caotun｜網站最後更新：2026/09/09</p>
+    <p class="copyright">© 2026 Genesis Social Welfare Foundation · Caotun｜網站最後更新：2026/09/14</p>
   </footer>
 
   <script src="script-v86.js"></script>
