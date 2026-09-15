@@ -211,6 +211,39 @@
   #form-modal:has(.form-tab[data-form-tab="payment"].active) .success-actions-registration-note { display:none; }
 
 </style>
+<style>
+/* V9.4 公益同行夥伴；協辦滿排，贊助與合作桌機四欄、手機兩欄 */
+#partners .wfl-partner-group{margin:36px 0}
+#partners .wfl-partner-group h3{font-size:1.15rem;color:var(--green);margin:0 0 16px}
+#partners .wfl-partner-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+#partners .wfl-partner-grid--cohost{grid-template-columns:minmax(0,1fr)}
+#partners .wfl-partner-card{margin:0;min-width:0;border:1px solid #e3e8e5;border-radius:16px;background:#fff;padding:20px 16px;text-align:center}
+#partners .wfl-partner-logos{min-height:120px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
+#partners .wfl-partner-logos img{display:block;width:100%;max-width:230px;height:auto;object-fit:contain}
+#partners figcaption{font-size:14px;line-height:1.6;margin-top:16px;color:#33473e;overflow-wrap:anywhere}
+#partners .wfl-partner-empty{grid-column:1/-1;margin:0;color:#64746d;font-size:14px;padding:16px 0;border-top:1px solid #e3e8e5}
+#partners .wfl-partner-grid--cohost .wfl-partner-logos{min-height:160px}
+#partners .wfl-partner-grid--cohost img{max-width:560px;max-height:110px}
+@media(max-width:767px){
+#partners .wfl-partner-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#partners .wfl-partner-grid--cohost{grid-template-columns:minmax(0,1fr)}
+#partners .wfl-partner-card{padding:16px 10px;border-radius:12px}
+#partners .wfl-partner-logos{min-height:100px;gap:14px}
+#partners figcaption{font-size:13px;margin-top:12px}
+#partners .wfl-partner-grid--cohost .wfl-partner-logos{min-height:120px}
+#partners .wfl-partner-grid--cohost img{max-width:260px;max-height:80px}
+}
+</style>
+<style>
+/* V9.4 贊助單位共用白底 */
+#partners .wfl-sponsor-panel{background:#fff;border:1px solid #e3e8e5;border-radius:16px;gap:0;overflow:hidden}
+#partners .wfl-sponsor-panel .wfl-partner-card{border:0;border-radius:0;background:transparent;padding:24px 16px}
+#partners .wfl-sponsor-recruit{grid-column:span 2;margin:0;padding:24px;display:flex;align-items:center;justify-content:center;min-height:160px;text-align:center;color:#64746d;font-size:15px;line-height:1.8}
+@media(max-width:767px){
+#partners .wfl-sponsor-panel .wfl-partner-card{padding:20px 10px}
+#partners .wfl-sponsor-recruit{min-height:72px;padding:16px 12px;border-top:1px solid #edf0ee;font-size:14px}
+}
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -224,7 +257,7 @@
       <a href="#finish">完賽上傳</a>
       <a href="#exhibition">故事展</a>
       <a href="#faq">常見問題</a>
-      <a href="#partners">企業夥伴</a>
+      <a href="#partners">公益同行夥伴</a>
       <button type="button" class="nav-cta nav-button" data-open-form="personal">立即報名</button>
     </nav>
     <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
@@ -485,19 +518,41 @@
 
     <section id="partners" class="section section-partners">
       <div class="container">
-        <p class="section-label">CORPORATE PARTNERS</p>
-        <h2 class="section-title">企業公益夥伴</h2>
-        <p class="partners-intro">感謝每一位與我們同行的企業夥伴。合作單位的品牌識別、優惠內容與公益支持資訊，將於此區展示。</p>
-        <div class="partner-invitation" aria-label="企業夥伴邀請">
-          <strong>合作夥伴持續邀請中</strong>
-          <span>企業名單與合作內容確認後，將於此區正式公開。</span>
+        <p class="section-label">WALK TOGETHER</p>
+        <h2 class="section-title">公益同行夥伴</h2>
+        <p class="partners-intro">感謝每一位與我們同行的夥伴，以不同方式支持植物人照顧，陪伴更多家庭繼續向前。</p>
+        <div class="wfl-partner-group">
+          <h3>協辦單位</h3>
+          <div class="wfl-partner-grid wfl-partner-grid--cohost"><p class="wfl-partner-empty">協辦單位將於確認後公布。</p></div>
+        </div>
+        <div class="wfl-partner-group">
+          <h3>贊助單位</h3>
+          <div class="wfl-partner-grid wfl-sponsor-panel">
+            <figure class="wfl-partner-card">
+              <div class="wfl-partner-logos">
+                <img src="assets/babbuza.png" alt="半山夢工廠 BABBUZA DREAMFACTORY" width="1894" height="355" loading="lazy">
+              </div>
+              <figcaption>半山夢工廠</figcaption>
+            </figure>
+            <figure class="wfl-partner-card">
+              <div class="wfl-partner-logos">
+                <img src="assets/shuter.jpg" alt="樹德 SHUTER" width="2048" height="566" loading="lazy">
+              </div>
+              <figcaption>樹德 SHUTER</figcaption>
+            </figure>
+            <p class="wfl-sponsor-recruit">贊助單位持續募集中</p>
+          </div>
+        </div>
+        <div class="wfl-partner-group">
+          <h3>合作夥伴</h3>
+          <div class="wfl-partner-grid"><p class="wfl-partner-empty">合作夥伴將於確認後公布。</p></div>
         </div>
         <div class="partner-cta">
           <div>
-            <h3>成為 Walk for Life 企業夥伴</h3>
+            <h3>成為 Walk for Life 公益同行夥伴</h3>
             <p>歡迎提供活動優惠、完賽贈品、抽獎品或公益合作資源。</p>
           </div>
-          <a href="mailto:VB3772@ms.genesis.org.tw" class="btn btn-outline">洽詢企業合作</a>
+          <a href="mailto:VB3772@ms.genesis.org.tw" class="btn btn-outline">洽詢公益合作</a>
         </div>
       </div>
     </section>
