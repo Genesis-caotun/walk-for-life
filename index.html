@@ -810,6 +810,24 @@
           </label>
 
 
+          <label class="field full">
+
+            <span>參加者姓名 *</span>
+
+            <input
+              name="participantName"
+              required
+              maxlength="40"
+              autocomplete="name"
+              placeholder="請輸入參加者姓名">
+
+            <small>
+              供工作人員人工核對完賽紀錄使用。
+            </small>
+
+          </label>
+
+
           <label class="field">
 
             <span>完成日期（分次累積請填最後一次日期）*</span>
@@ -957,6 +975,28 @@
   <script src="script-v86.js"></script>
 <script src="group-v2.js"></script>
 <script src="form-fixes-v1.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const finishForm = document.getElementById('finish-form');
+  if (!finishForm) return;
+
+  finishForm.addEventListener('submit', function () {
+    const nameInput = finishForm.elements.participantName;
+    const noteInput = finishForm.elements.note;
+    if (!nameInput || !noteInput) return;
+
+    const name = String(nameInput.value || '').trim();
+    if (!name) return;
+
+    const prefixPattern = /^\[參加者姓名\]\s*.*(?:\r?\n)?/;
+    const currentNote = String(noteInput.value || '');
+    const noteWithoutPrefix = currentNote.replace(prefixPattern, '').trim();
+
+    noteInput.value = '[參加者姓名] ' + name + (noteWithoutPrefix ? '\n' + noteWithoutPrefix : '');
+  }, true);
+});
+</script>
+
 <script src="finish-v3.js"></script>
 <script src="wfl-update-v3.js"></script>
 </body>
