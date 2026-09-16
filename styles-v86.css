@@ -1062,3 +1062,152 @@ body.privacy-open{overflow:hidden}
     grid-column:auto;
   }
 }
+
+/* =========================================================
+   WFL v9.6 — Responsive Hero (desktop + mobile artwork)
+   2026-09-16
+   ========================================================= */
+.hero{
+  min-height:0;
+  position:relative;
+  display:block;
+  align-items:initial;
+  padding-top:72px;
+  overflow:hidden;
+  background:#eef1ed;
+  background-image:none;
+}
+
+.hero-picture{
+  display:block;
+  width:100%;
+  line-height:0;
+  background:#eef1ed;
+}
+
+.hero-visual{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+}
+
+/* 新主視覺已含完整明暗與字樣，不再疊舊版深色遮罩 */
+.hero-overlay{
+  display:none;
+}
+
+/* 主視覺下方的資訊／CTA 區，避免文字壓到人物與圖像字樣 */
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+  margin:0;
+  padding:22px clamp(20px,5vw,72px) 24px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"event actions";
+  align-items:center;
+  gap:22px;
+  color:#fff;
+  background:linear-gradient(90deg,#123d37 0%,#174c46 100%);
+  border-top:1px solid rgba(255,255,255,.10);
+}
+
+/* 圖片本身已呈現 Walk for Life／與植同行；保留語意文字供 SEO 與無障礙使用 */
+.hero .kicker,
+.hero h1,
+.hero h2{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+
+.hero .event-name{
+  grid-area:event;
+  margin:0;
+  max-width:760px;
+  font-size:clamp(.98rem,1.35vw,1.18rem);
+  line-height:1.6;
+  font-weight:700;
+  letter-spacing:.015em;
+}
+
+.hero-actions{
+  grid-area:actions;
+  display:flex;
+  flex-wrap:nowrap;
+  gap:10px;
+  margin:0;
+}
+
+.hero-actions .btn{
+  min-height:44px;
+  padding:9px 18px;
+  white-space:nowrap;
+}
+
+.hero .btn-secondary{
+  border-color:rgba(255,255,255,.54);
+  background:rgba(255,255,255,.07);
+}
+
+.hero .btn-secondary:hover{
+  background:rgba(255,255,255,.14);
+}
+
+@media(max-width:980px){
+  .hero-content{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "event"
+      "actions";
+    gap:16px;
+  }
+
+  .hero-actions{
+    flex-wrap:wrap;
+  }
+}
+
+@media(max-width:767px){
+  .hero{
+    padding-top:64px;
+  }
+
+  .hero-content{
+    padding:18px 16px 20px;
+    gap:14px;
+  }
+
+  .hero .event-name{
+    font-size:.98rem;
+    line-height:1.65;
+  }
+
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    gap:9px;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+    min-height:46px;
+  }
+}
+
+@media(max-width:420px){
+  .hero-content{
+    padding-left:14px;
+    padding-right:14px;
+  }
+}
+

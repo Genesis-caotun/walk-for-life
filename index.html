@@ -12,8 +12,16 @@
   <meta property="og:title" content="Walk for Life｜與植同行" />
   <meta property="og:description" content="2026 創世草屯院線上公益健走，邀請你用 3 公里的每一步，陪伴植物人家庭繼續前行。" />
   <meta property="og:url" content="https://genesis-caotun.github.io/walk-for-life/" />
-  <meta property="og:image" content="https://genesis-caotun.github.io/walk-for-life/hero.png" />
+  <meta property="og:image" content="https://genesis-caotun.github.io/walk-for-life/hero-desktop.webp" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1948" />
+  <meta property="og:image:height" content="926" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Walk for Life｜與植同行" />
+  <meta name="twitter:description" content="2026 創世草屯院線上公益健走，邀請你用 3 公里的每一步，陪伴植物人家庭繼續前行。" />
+  <meta name="twitter:image" content="https://genesis-caotun.github.io/walk-for-life/hero-desktop.webp" />
+  <link rel="preload" as="image" href="hero-desktop.webp" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="hero-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -265,12 +273,18 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-overlay"></div>
+    <section class="hero" aria-labelledby="hero-title">
+      <picture class="hero-picture">
+        <source media="(max-width: 767px)" srcset="hero-mobile.webp">
+        <img class="hero-visual" src="hero-desktop.webp" width="1948" height="926"
+             alt="Walk for Life 與植同行，創世基金會草屯分院公益健走主視覺"
+             fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-content">
         <p class="kicker">GENESIS SOCIAL WELFARE FOUNDATION · CAOTUN</p>
-        <h1>Walk for Life</h1>
+        <h1 id="hero-title">Walk for Life</h1>
         <h2>與植同行</h2>
         <p class="event-name">2026 創世草屯院公益線上健走暨照顧故事展</p>
         <div class="hero-actions">
