@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="zh_TW" />
   <meta property="og:title" content="Walk for Life｜與植同行" />
-  <meta property="og:description" content="2026 創世草屯院線上公益健走，邀請你用 3 公里的每一步，陪伴植物人家庭繼續前行。" />
+  <meta property="og:description" content="2026 創世草屯院線上公益健走，邀請你以累積 3 公里或單日 8,000 步，陪伴植物人家庭繼續前行。" />
   <meta property="og:url" content="https://genesis-caotun.github.io/walk-for-life/" />
   <meta property="og:image" content="https://genesis-caotun.github.io/walk-for-life/hero.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -210,6 +210,8 @@
   .success-actions-registration-note { background:#fff5e7; padding:14px; border-radius:12px; }
   #form-modal:has(.form-tab[data-form-tab="payment"].active) .success-actions-registration-note { display:none; }
 
+
+#finish-form [hidden] { display:none !important; }
 </style>
 <style>
 /* V9.5 公益同行夥伴；協辦滿排，贊助與合作桌機四欄、手機兩欄 */
@@ -317,12 +319,12 @@
         <div>
           <p class="section-label light">THE EVENT</p>
           <h2 class="section-title light">線上公益健走</h2>
-          <p class="lead light">不問速度，不限制地點。活動期間內，用走路、散步或慢跑累積距離，以手機、運動手錶或運動APP累積距離，完成後上傳紀錄即可。報名後即可開始累積里程，可分次完成 3 公里，請於 11/30 前上傳紀錄。</p>
+          <p class="lead light">不問速度，不限制地點。活動期間內，用走路、散步或慢跑記錄運動，以手機、運動手錶或運動 APP 記錄距離或步數，完成後上傳紀錄即可。報名後即可開始記錄；累積完成 3 公里（可跨日），或單日完成 8,000 步，擇一即可。請於對帳確認後、11/30 前上傳紀錄。</p>
         </div>
         <div class="info-grid">
           <div class="info-box"><strong>報名截止</strong><span>2026/11/23 23:59（臺灣時間）</span></div>
           <div class="info-box"><strong>付款回報截止</strong><span>2026/11/25 23:59（臺灣時間）</span></div><div class="info-box"><strong>完賽上傳截止</strong><span>2026/11/30 23:59（臺灣時間）</span></div><div class="info-box"><strong>完成方式</strong><span>上傳運動 App 或手錶紀錄截圖</span></div>
-          <div class="info-box"><strong>挑戰距離</strong><span>統一挑戰 3 公里</span></div>
+          <div class="info-box"><strong>挑戰方式</strong><span>累積 3 公里或單日 8,000 步，擇一達成</span></div>
           <div class="info-box"><strong>參與地點</strong><span>全台各地皆可完成</span></div>
         </div>
       </div>
@@ -367,7 +369,7 @@
         <p class="section-label">HOW TO JOIN</p>
         <h2 class="section-title">報名與付款方式</h2>
         <div class="steps">
-          <div class="step"><span>1</span><div><h3>選擇個人或團體報名</h3><p>填寫聯絡方式、參與方案與收據資料；挑戰距離統一為 3 公里。</p></div></div>
+          <div class="step"><span>1</span><div><h3>選擇個人或團體報名</h3><p>填寫聯絡方式、參與方案與收據資料；完賽條件為累積 3 公里或單日 8,000 步，擇一達成。</p></div></div>
           <div class="step"><span>2</span><div><h3>選擇付款方式</h3><p>可使用信用卡、郵政劃撥或銀行匯款完成付款。</p></div></div>
           <div class="step"><span>3</span><div><h3>保留付款紀錄</h3><p>信用卡請保留交易結果；劃撥或匯款請保留收據及帳號末五碼。所有付款方式（含信用卡）完成後，皆須回到本站填寫「付款回報」，以利人工對帳。</p></div></div>
         </div>
@@ -421,7 +423,7 @@
 
         <div class="registration-status-notice" role="note" style="margin-top:24px;">
           <strong>付款回報後，請等待工作人員完成對帳</strong>
-          <span>人工對帳暫定於付款回報資料齊全後約兩週內完成。報名後即可開始累積里程；完成 3 公里後，請於 11/30 前以報名編號上傳紀錄。對帳確認後，系統會寄送電子號碼布。</span>
+          <span>人工對帳暫定於付款回報資料齊全後約兩週內完成。報名後即可開始記錄；累積 3 公里或單日 8,000 步，擇一達成。對帳確認後，系統會寄送電子號碼布，並開放完賽上傳，請於 11/30 前以個人報名編號或號碼布編號上傳紀錄。</span>
         </div>
       </div>
     </section>
@@ -429,11 +431,11 @@
 <section id="finish" class="section section-light">
   <div class="container narrow">
     <p class="section-label">FINISH SUBMISSION</p>
-    <h2 class="section-title">完成 3 公里了嗎？</h2>
+    <h2 class="section-title">完成挑戰了嗎？</h2>
 
     <p class="lead">
-      完成 Walk for Life 3 公里挑戰後，
-      請上傳手機、運動手錶或運動 App 的距離紀錄截圖。
+      完成 Walk for Life 挑戰後，
+      請上傳手機、運動手錶或運動 App 的距離或步數紀錄截圖。
     </p>
 
     <div class="registration-status-notice" role="note">
@@ -495,11 +497,11 @@
 <details><summary>報名、付款回報與完賽上傳何時截止？</summary><p>報名至 11/23、付款回報至 11/25、完賽上傳至 11/30，各截止日均為 2026 年當日 23:59（臺灣時間）。報名後即可開始累積里程。</p></details>
         <details>
           <summary>一定要跑步嗎？</summary>
-          <p>不用。散步、健走、慢跑都可以，重點是完成 3 公里挑戰。</p>
+          <p>不用。散步、健走、慢跑都可以，重點是完成累積 3 公里或單日 8,000 步的其中一項挑戰。</p>
         </details>
         <details>
           <summary>一定要一次完成嗎？</summary>
-          <p>不用，可以在活動期間內分次累積完成 3 公里。</p>
+          <p>距離挑戰可分次、跨日累積至 3 公里；步數挑戰須於同一天完成 8,000 步，不可跨日相加。兩者擇一即可。</p>
         </details>
         <details>
           <summary>怎麼證明完賽？</summary>
@@ -779,7 +781,7 @@
 
         <div class="form-intro">
 
-          <h3>3 公里完賽回報</h3>
+          <h3>距離／步數完賽回報</h3>
 
           <p>
             輸入電子號碼布上的報名編號或號碼布，
@@ -830,7 +832,7 @@
 
           <label class="field">
 
-            <span>完成日期（分次累積請填最後一次日期）*</span>
+            <span>完成日期（距離填最後一天；步數填達標當天）*</span>
 
             <input
               type="date"
@@ -840,20 +842,25 @@
           </label>
 
 
-          <label class="field">
-
+          <label class="field full">
+            <span>完賽方式（擇一）*</span>
+            <select name="finishType" required>
+              <option value="distance">距離：累積至少 3 公里（可跨日）</option>
+              <option value="steps">步數：單日至少 8,000 步</option>
+            </select>
+          </label>
+          <label class="field" id="finish-distance-field">
             <span>完成公里數 *</span>
-
-            <input
-              type="number"
-              name="distance"
-              required
-              min="3"
-              max="999"
-              step="0.01"
-              inputmode="decimal"
-              placeholder="例如 3.25">
-
+            <input type="number" name="distance" required min="3" max="999" step="0.01" inputmode="decimal" placeholder="例如 3.25">
+          </label>
+          <label class="field" id="finish-steps-field" hidden>
+            <span>單日完成步數 *</span>
+            <input type="number" name="steps" disabled min="8000" step="1" inputmode="numeric" placeholder="例如 8500">
+            <small>僅填完成日期當天的步數，不可加總不同日期。</small>
+          </label>
+          <label class="consent field full" id="finish-steps-confirm-field" hidden>
+            <input type="checkbox" name="stepsSingleDay" disabled>
+            <span>我確認步數紀錄為同一天，截圖可辨識日期與步數；多張截圖不重複加計。</span>
           </label>
 
 
@@ -869,7 +876,7 @@
               accept="image/jpeg,image/png,image/webp">
 
             <small>
-              可上傳手機、運動手錶或運動 App 截圖。
+              可上傳手機、運動手錶或運動 App 截圖。距離可跨日累積；步數須為同一天且顯示日期與步數，勿重複加計。
               JPG、PNG、WEBP，最多 6 張、每張上限 5MB。網站會將多張截圖合併為一份紀錄送出；過長或合併後超過 5MB 時會提示重新選擇。
             </small>
 
@@ -969,35 +976,15 @@
         <button type="button" class="footer-privacy-link" data-open-privacy>個人資料告知事項</button>
       </div>
     </div>
-    <p class="copyright">© 2026 Genesis Social Welfare Foundation · Caotun｜網站最後更新：2026/09/14</p>
+    <p class="copyright">© 2026 Genesis Social Welfare Foundation · Caotun｜網站最後更新：2026/10/12</p>
   </footer>
 
   <script src="script-v86.js"></script>
 <script src="group-v2.js"></script>
 <script src="form-fixes-v1.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const finishForm = document.getElementById('finish-form');
-  if (!finishForm) return;
 
-  finishForm.addEventListener('submit', function () {
-    const nameInput = finishForm.elements.participantName;
-    const noteInput = finishForm.elements.note;
-    if (!nameInput || !noteInput) return;
 
-    const name = String(nameInput.value || '').trim();
-    if (!name) return;
-
-    const prefixPattern = /^\[參加者姓名\]\s*.*(?:\r?\n)?/;
-    const currentNote = String(noteInput.value || '');
-    const noteWithoutPrefix = currentNote.replace(prefixPattern, '').trim();
-
-    noteInput.value = '[參加者姓名] ' + name + (noteWithoutPrefix ? '\n' + noteWithoutPrefix : '');
-  }, true);
-});
-</script>
-
-<script src="finish-v3.js"></script>
+<script src="finish-v4.js?v=20261012"></script>
 <script src="wfl-update-v3.js"></script>
 </body>
 </html>
