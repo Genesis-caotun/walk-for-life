@@ -246,6 +246,7 @@
 #partners .wfl-sponsor-recruit{min-height:72px;padding:16px 12px;border-top:1px solid #edf0ee;font-size:14px}
 }
 </style>
+<style>#payment-reference-field[hidden]{display:none!important}</style>
 </head>
 <body>
   <header class="site-header">
@@ -259,6 +260,7 @@
       <a href="#finish">完賽上傳</a>
       <a href="#exhibition">故事展</a>
       <a href="#faq">常見問題</a>
+      <a href="step-guide.html" target="_blank" rel="noopener">記步教學</a>
       <a href="#partners">公益同行夥伴</a>
       <button type="button" class="nav-cta nav-button" data-open-form="personal">立即報名</button>
     </nav>
@@ -706,16 +708,19 @@
 
         <form id="payment-form" class="native-form" data-form-type="payment" hidden>
           <p class="review-timing-note">信用卡付款後也須填寫本表；人工對帳暫定於資料齊全後約兩週內完成。</p>
-          <div class="form-intro"><h3>付款回報</h3><p>請於 2026/11/25 23:59 前完成付款回報（臺灣時間）。</p><p>請輸入報名後收到的個人或團體編號，每次回報一組編號。</p></div>
+          <div class="form-intro"><h3>付款回報</h3><p>請於 2026/11/25 23:59 前完成付款回報（臺灣時間）。</p><p>找不到編號也沒關係，填報名姓名即可；團體請填團體編號或團體名稱。</p></div>
           <div class="field-grid two-col">
-            <label class="field"><span>報名編號 *</span><input name="registrationId" required maxlength="16" pattern="(?:WFL26[0-9]{4,6}|WFLG[0-9]{3})" placeholder="WFL260001 或 WFLG001"></label>
-            <label class="field"><span>付款人姓名／匯款戶名 *</span><input name="payerName" required maxlength="50"></label>
+            <label class="field full"><span>報名編號或報名姓名／團體名稱（擇一）*</span><input name="registrationIdentity" required maxlength="100" placeholder="例如 WFL260001、王小明或團體名稱"><small>每次回報一筆報名；若為代付，這裡仍填原報名者。</small></label>
             <label class="field"><span>付款方式 *</span><select name="paymentMethod" required><option value="">請選擇</option><option>銀行轉帳</option><option>郵政劃撥</option><option>信用卡</option><option>現場繳費</option><option>其他</option></select></label>
-            <label class="field"><span>實際付款日期 *</span><input type="date" name="paymentDate" required></label>
-            <label class="field"><span>實際付款總金額 *</span><input type="number" min="1" max="10000000" name="amount" required></label>
-            <label class="field"><span>帳號末五碼／信用卡訂單編號</span><input name="referenceNumber" maxlength="50"></label>
-            <label class="field full"><span>聯絡電話 *</span><input name="phone" required maxlength="20" inputmode="tel" pattern="[0-9+()\- ]{7,20}"></label>
+            <label class="field"><span>實際付款日期 *</span><input type="date" name="paymentDate" required><small>預設今天；若不是今天付款，請修改日期。</small></label>
+            <label class="field"><span>實際付款總金額 *</span><input type="number" min="1" max="10000000" step="1" name="amount" required><small>請確認實際付款金額，團體請填總額。</small></label>
+            <label class="field" id="payment-reference-field" hidden><span id="payment-reference-label">核對編號</span><input name="referenceNumber" maxlength="50" disabled></label>
+            <label class="field full"><span>實際付款人姓名／匯款戶名（選填）</span><input name="payerName" maxlength="100" placeholder="與報名者不同、團體付款或代付時請填寫"><small>信用卡請填官網捐款人姓名；同名可留空。</small></label>
           </div>
+          <details style="margin:16px 0"><summary>補充說明或聯絡電話（選填）</summary><div class="field-grid two-col">
+            <label class="field"><span>聯絡電話</span><input name="phone" maxlength="20" inputmode="tel" pattern="[0-9+()\- ]{7,20}" placeholder="同名或需要聯繫時可提供"></label>
+            <label class="field full"><span>補充說明</span><textarea name="note" maxlength="500" rows="2" placeholder="合併付款或其他需要協助的事項"></textarea></label>
+          </div></details>
           <label class="hp-field" aria-hidden="true">請勿填寫<input name="website" tabindex="-1" autocomplete="off"></label>
           <button class="btn btn-primary submit-button" type="submit">送出付款回報</button>
         </form>
@@ -783,6 +788,7 @@
 
 
       <form id="finish-form">
+<p style="padding:14px;background:#edf3ef;border-radius:10px">不知道如何查看步數或截圖？<a href="step-guide.html" target="_blank" rel="noopener" style="text-decoration:underline;color:#174c46;font-weight:bold">開啟手機記步教學 ↗</a>（另開分頁，保留目前填寫內容）</p>
 <p id="finish-file-status" role="status" aria-live="polite">尚未選擇截圖</p>
 <p>請於 2026/11/30 23:59 前送出完賽紀錄（臺灣時間）。</p>
 
@@ -993,5 +999,6 @@
 
 <script src="finish-v4.js?v=20261012"></script>
 <script src="wfl-update-v3.js"></script>
+<script src="payment-simple-v1.js?v=20261022"></script>
 </body>
 </html>
