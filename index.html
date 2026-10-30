@@ -708,9 +708,9 @@
 
         <form id="payment-form" class="native-form" data-form-type="payment" hidden>
           <p class="review-timing-note">信用卡付款後也須填寫本表；人工對帳暫定於資料齊全後約兩週內完成。</p>
-          <div class="form-intro"><h3>付款回報</h3><p>請於 2026/11/25 23:59 前完成付款回報（臺灣時間）。</p><p>找不到編號也沒關係，填報名姓名即可；團體請填團體編號或團體名稱。</p></div>
+          <div class="form-intro"><h3>付款回報</h3><p>請於 2026/11/25 23:59 前完成付款回報（臺灣時間）。</p><p>請填寫報名通知信中的報名編號；團體請填團體編號。找不到編號，請洽 049-2551119 分機12 許先生。</p></div>
           <div class="field-grid two-col">
-            <label class="field full"><span>報名編號或報名姓名／團體名稱（擇一）*</span><input name="registrationIdentity" required maxlength="100" placeholder="例如 WFL260001、王小明或團體名稱"><small>每次回報一筆報名；若為代付，這裡仍填原報名者。</small></label>
+            <label class="field full"><span>報名編號 *</span><input name="registrationId" required maxlength="16" pattern="(?:[Ww][Ff][Ll]26[0-9]{4,6}|[Ww][Ff][Ll][Gg][0-9]{3})" placeholder="個人 WFL260001／團體 WFLG001" autocapitalize="characters" spellcheck="false"><small>每次回報一筆報名；代付款請填原報名者的編號，團體統一付款請填團體編號。</small></label>
             <label class="field"><span>付款方式 *</span><select name="paymentMethod" required><option value="">請選擇</option><option>銀行轉帳</option><option>郵政劃撥</option><option>信用卡</option><option>現場繳費</option><option>其他</option></select></label>
             <label class="field"><span>實際付款日期 *</span><input type="date" name="paymentDate" required><small>預設今天；若不是今天付款，請修改日期。</small></label>
             <label class="field"><span>實際付款總金額 *</span><input type="number" min="1" max="10000000" step="1" name="amount" required><small>請確認實際付款金額，團體請填總額。</small></label>
@@ -999,6 +999,6 @@
 
 <script src="finish-v4.js?v=20261012"></script>
 <script src="wfl-update-v3.js"></script>
-<script src="payment-simple-v1.js?v=20261022"></script>
+<script src="payment-simple-v2.js?v=20261030"></script>
 </body>
 </html>
