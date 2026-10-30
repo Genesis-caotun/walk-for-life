@@ -247,6 +247,25 @@
 }
 </style>
 <style>#payment-reference-field[hidden]{display:none!important}</style>
+
+<style id="wfl-gift-showcase-style">
+#plans .gift-showcase{margin-top:28px;padding:28px;background:#eaf0e7;border:1px solid #dce5d9;border-radius:22px;color:#194c46;}
+#plans .gift-showcase-header{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:20px;}
+#plans .gift-showcase-header h3{margin:0;font-size:clamp(20px,2.2vw,26px);line-height:1.5;}
+#plans .gift-showcase-header p{margin:0;color:#52645d;font-size:15px;line-height:1.8;}
+#plans .gift-showcase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
+#plans .gift-showcase figure{margin:0;min-width:0;}
+#plans .gift-showcase img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;border-radius:14px;}
+#plans .gift-showcase figcaption{text-align:center;margin-top:14px;line-height:1.7;}
+#plans .gift-showcase figcaption strong{display:block;font-size:18px;}
+#plans .gift-showcase figcaption span{display:block;color:#52645d;font-size:14px;margin-top:3px;}
+@media(max-width:640px){
+#plans .gift-showcase{padding:18px;margin-top:22px;border-radius:18px;}
+#plans .gift-showcase-header{gap:6px;margin-bottom:16px;}
+#plans .gift-showcase-grid{grid-template-columns:1fr;gap:24px;}
+#plans .gift-showcase figcaption{margin-top:10px;}
+}
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -363,6 +382,22 @@
           </article>
         </div>
         <p class="plan-delivery-note">報名方案所含實體物資均含運費，不另收寄送費用。</p>
+        <div class="gift-showcase" role="region" aria-labelledby="gift-showcase-title">
+          <div class="gift-showcase-header">
+            <h3 id="gift-showcase-title">守護完賽組｜好禮展示</h3>
+            <p>以下為部分好禮，其餘品項依方案說明。</p>
+          </div>
+          <div class="gift-showcase-grid">
+            <figure>
+              <img src="wfl-gift-bag.png" alt="灰色與植同行紀念運動腰包展示" width="1536" height="1024" loading="lazy" decoding="async">
+              <figcaption><strong>紀念運動腰包</strong></figcaption>
+            </figure>
+            <figure>
+              <img src="wfl-gift-medal.jpg" alt="與植同行木製完賽獎牌正反面展示，同一枚獎牌" width="1536" height="1024" loading="lazy" decoding="async">
+              <figcaption><strong>木製完賽獎牌</strong><span>正反面展示，同一枚獎牌。</span></figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1002,3 +1037,4 @@
 <script src="payment-simple-v2.js?v=20261030"></script>
 </body>
 </html>
+
