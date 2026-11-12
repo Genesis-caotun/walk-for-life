@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (finishDateInput) {
     finishDateInput.max =
-      [getLocalDateString_(), '2026-11-30'].sort()[0];
+      [getLocalDateString_(), '2027-02-28'].sort()[0];
   }
 
 
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
       try {
-        if (finishDate > getLocalDateString_() || finishDate > '2026-11-30') throw new Error('完成日期不可晚於今天或 11/30。');
+        if (finishDate > getLocalDateString_() || finishDate > '2027-02-28') throw new Error('完成日期不可晚於今天或 2027/02/28。');
 
         /*********************************************
          * 圖片 → Base64
@@ -666,45 +666,16 @@ function readFileAsDataUrl_(
 
 
 /*************************************************
- * 取得本機日期 YYYY-MM-DD
+ * 取得臺灣日期 YYYY-MM-DD
  *************************************************/
 
 function getLocalDateString_() {
-
-  const now =
-    new Date();
-
-
-  const year =
-    now.getFullYear();
-
-
-  const month =
-    String(
-      now.getMonth() + 1
-    ).padStart(
-      2,
-      '0'
-    );
-
-
-  const day =
-    String(
-      now.getDate()
-    ).padStart(
-      2,
-      '0'
-    );
-
-
-  return (
-    year +
-    '-' +
-    month +
-    '-' +
-    day
-  );
-
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Asia/Taipei',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(new Date());
 }
 
 // Preserve the existing single-image API contract: submit all selected records as one sheet.
