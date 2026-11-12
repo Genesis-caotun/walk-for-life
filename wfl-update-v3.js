@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   const deadlines = {
-    personal: ['2026-11-24T00:00:00+08:00', '報名已於 11/23 截止。'],
-    group: ['2026-11-24T00:00:00+08:00', '報名已於 11/23 截止。'],
-    payment: ['2026-11-26T00:00:00+08:00', '付款回報已於 11/25 截止。'],
-    finish: ['2026-12-01T00:00:00+08:00', '完賽上傳已於 11/30 截止。']
+    personal: ['2027-03-01T00:00:00+08:00', '報名已於 2027/02/28 截止。'],
+    group: ['2027-03-01T00:00:00+08:00', '報名已於 2027/02/28 截止。'],
+    payment: ['2027-03-01T00:00:00+08:00', '付款回報已於 2027/02/28 截止。'],
+    finish: ['2027-03-01T00:00:00+08:00', '完賽上傳已於 2027/02/28 截止。']
   };
   document.addEventListener('submit', event => {
     const type = event.target.id === 'finish-form' ? 'finish' : event.target.dataset.formType;
