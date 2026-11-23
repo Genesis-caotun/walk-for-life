@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#234b42">
+  <meta name="description" content="2026 年 12 月 1–28 日活動排班桌曆。透過 Google 帳號登入，可替他人登記並查看實際編輯者。">
+  <title>一張床旁邊的距離｜12 月服務排班</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="identity" href="./" aria-label="排班網站首頁">
+        <span class="identity-mark" aria-hidden="true">✳</span>
+        <span><small>2026 DECEMBER</small><strong>服務排班日曆</strong></span>
+      </a>
+      <div class="account-actions">
+        <span id="userBadge" class="user-badge" hidden><span class="user-icon" id="userIcon"></span><span class="badge-label"><strong id="googleName"></strong><small id="googleEmail"></small></span></span>
+        <button class="button button-outline" id="exportButton" hidden type="button">↓ 匯出名單</button>
+        <button class="button button-primary" id="loginButton" type="button">使用 Google 登入</button>
+        <button class="button button-outline" id="logoutButton" type="button" hidden>登出</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="pageTitle">
+        <div class="intro-copy"><div class="kicker"><span class="light-dot"></span>2026／12／01 — 12／28</div><h1 id="pageTitle">一起填滿，<br>十二月的陪伴時光。</h1><p>選擇想參與的日期，填入自己的名字，或替夥伴登記。<br>每個名字背後都有一份願意付出的心意。</p></div>
+        <div class="intro-side" aria-hidden="true"><div class="large-28">28<span>天</span></div><div class="side-rule"></div><span>開放登記日期</span></div>
+      </section>
+
+      <div id="demoBanner" class="banner banner-demo" role="status" hidden><span aria-hidden="true">◉</span><div><strong>這是示範模式</strong><p>可點選日期試用「新增、修改、刪除、查看編輯者」，資料只存在這個畫面，不會上傳或與他人同步。正式啟用請依 README 接上 Firebase。</p></div></div>
+      <div id="errorBanner" class="banner banner-error" role="alert" hidden></div>
+      <div class="hint-bar"><div id="statusText" class="hint-status" aria-live="polite">正在載入排班系統…</div><span class="hint-privacy">姓名及 Google 登記紀錄僅限登入者查看</span></div>
+
+      <section class="numbers" aria-label="排班統計">
+        <article class="number-card"><div class="number-icon" aria-hidden="true">▦</div><div><strong id="daysCount">—</strong><small>已有安排的日期</small></div></article>
+        <article class="number-card"><div class="number-icon" aria-hidden="true">♧</div><div><strong id="peopleCount">—</strong><small>累計排班人次</small></div></article>
+        <article class="number-card"><div class="number-icon" aria-hidden="true">✓</div><div><strong id="myCount">—</strong><small>由我登記的筆數</small></div></article>
+      </section>
+
+      <section class="calendar-section" aria-labelledby="calendarTitle">
+        <div class="section-heading"><div><span class="overline">SCHEDULE BOARD</span><h2 id="calendarTitle">2026 年 12 月</h2><p>點選日期即可新增多位排班者；將滑鼠移到姓名上，可看見實際的 Google 登記者與最後修改者。</p></div><div class="legend"><span><i class="legend-own"></i>我建立的登記</span><span><i class="legend-other"></i>其他夥伴</span></div></div>
+        <div class="calendar-paper">
+          <div class="weekday-row" aria-hidden="true"><span>星期日</span><span>星期一</span><span>星期二</span><span>星期三</span><span>星期四</span><span>星期五</span><span>星期六</span></div>
+          <div id="calendar" class="calendar-grid" aria-live="polite"></div>
+        </div>
+        <p class="help-text">✦ 可代替家人、朋友或志工登記，無須對方也有 Google 帳號。每筆登記都會保存建立者與最後修改者的 Google 身分資訊。手機請點選姓名查看。</p>
+      </section>
+    </main>
+    <footer>一張床旁邊的距離・2026 年 12 月服務排班｜請尊重夥伴個資，勿公開轉傳完整名單。</footer>
+  </div>
+
+  <div id="hoverInfo" class="hover-info" role="tooltip" hidden></div>
+  <div id="dialogBackdrop" class="dialog-backdrop" hidden>
+    <section class="edit-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogHeading">
+      <div class="dialog-top"><div><span id="dialogSubtitle" class="overline">DECEMBER 2026</span><h3 id="dialogHeading">12 月 1 日</h3></div><button id="closeDialog" class="close-button" type="button" aria-label="關閉登記視窗">×</button></div>
+      <div class="dialog-body">
+        <div class="dialog-note">以下名單為該日的排班人員。<strong>姓名可以填別人的，但操作紀錄一定綁定你的 Google 帳號。</strong></div>
+        <div id="dialogRoster" class="dialog-roster"></div>
+        <form id="personForm" class="person-form">
+          <input type="hidden" id="editingId">
+          <label for="participantName"><span id="formLabel">新增排班姓名</span><small>最多 40 字，可替別人登記</small></label>
+          <div class="form-row"><input id="participantName" type="text" maxlength="40" autocomplete="off" placeholder="例如：王小明" required><button id="saveButton" class="button button-primary" type="submit">＋ 新增登記</button></div>
+          <div class="form-actions"><button id="cancelEdit" class="text-button" type="button" hidden>取消修改</button><span id="formMessage" class="form-message" role="status"></span></div>
+        </form>
+      </div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
