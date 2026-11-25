@@ -12,9 +12,10 @@ const AUDIT_TAB = '操作紀錄';
 const FIRST_DAY = '2026-12-01';
 const LAST_DAY = '2026-12-28';
 
-function doGet() {
+function doGet(e) {
   const page = HtmlService.createTemplateFromFile('Bridge');
   page.allowedOrigin = ALLOWED_ORIGIN;
+  page.bridgeNonce = e && e.parameter && /^[A-Za-z0-9-]{36,100}$/.test(String(e.parameter.bridge_nonce || '')) ? String(e.parameter.bridge_nonce) : '';
   return page.evaluate()
     .setTitle('十二月排班・資料安全連線')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
