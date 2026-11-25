@@ -1,6 +1,6 @@
 /**
  * 12/1～12/28 志工排班：免登入 Google 試算表後端。
- * 請在此試算表的「擴充功能 → Apps Script」貼上本檔，另新增 Bridge.html。
+ * 請在此試算表的「擴充功能 → Apps Script」貼上本檔，直接貼上即可，不需新增其他檔案。
  * 部署成：網頁應用程式 → 執行身分「我」→ 存取權「所有人」。
  * 警告：公開免登入，操作人姓名由訪客自行填寫，不能驗證真實身分。
  */
@@ -10,12 +10,46 @@ const DATA_TAB = '排班資料';
 const AUDIT_TAB = '操作紀錄';
 
 function doGet(e) {
-  const page=HtmlService.createTemplateFromFile('Bridge');
-  page.allowedOrigin=ALLOWED_ORIGIN;
-  page.bridgeNonce=e && e.parameter && /^[a-zA-Z0-9-]{36,100}$/.test(String(e.parameter.bridge_nonce || '')) ? String(e.parameter.bridge_nonce) : '';
-  return page.evaluate().setTitle('服務排班・試算表連線')
+  const nonce=e && e.parameter && /^[a-zA-Z0-9-]{36,100}$/.test(String(e.parameter.bridge_nonce || '')) ? String(e.parameter.bridge_nonce) : '';
+  const html=`<!doctype html>
+<html lang="zh-Hant"><head><base target="_top"><meta charset="utf-8"></head>
+<body style="margin:0;background:transparent">
+<script>
+(function(){
+  'use strict';
+  const approvedOrigin = ${JSON.stringify(ALLOWED_ORIGIN)};
+  const bridgeNonce = ${JSON.stringify(nonce)};
+  let session = null;
+  let lastOrigin = null;
+  function send(message, origin) {
+    window.top.postMessage(message, origin || approvedOrigin);
+  }
+  window.addEventListener('message', function(event){
+    if (event.source !== window.top || event.origin !== approvedOrigin) return;
+    const data = event.data;
+    if (!data || typeof data !== 'object') return;
+    if (data.type === 'roster:hello' && typeof data.session === 'string' && data.session.length >= 18) {
+      session = data.session;
+      lastOrigin = event.origin;
+      send({type:'roster:ack',session:session},lastOrigin);
+      return;
+    }
+    if (data.type !== 'roster:request' || !session || data.session !== session ||
+        typeof data.requestId !== 'string' || !data.payload) return;
+    const requestId = data.requestId, sid=session;
+    google.script.run
+      .withSuccessHandler(function(result){send({type:'roster:response',session:sid,requestId:requestId,result:result},lastOrigin);})
+      .withFailureHandler(function(err){send({type:'roster:response',session:sid,requestId:requestId,error:String(err&&err.message||err||'後端錯誤')},lastOrigin);})
+      .apiRequest(data.payload);
+  });
+  if (bridgeNonce) send({type:'roster:ready',nonce:bridgeNonce},approvedOrigin);
+})();
+</script>
+</body></html>`;
+  return HtmlService.createHtmlOutput(html).setTitle('志工排班・資料連線')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
+
 function checkSetup() {
   const ss=SpreadsheetApp.openById(SPREADSHEET_ID);
   if(!ss.getSheetByName(DATA_TAB)||!ss.getSheetByName(AUDIT_TAB))throw new Error('找不到「排班資料」或「操作紀錄」工作表');
