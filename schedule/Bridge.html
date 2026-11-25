@@ -5,13 +5,14 @@
 (function(){
   'use strict';
   const approvedOrigin = <?!= JSON.stringify(allowedOrigin) ?>;
+  const bridgeNonce = <?!= JSON.stringify(bridgeNonce) ?>;
   let session = null;
   let lastOrigin = null;
   function send(message, origin) {
-    window.parent.postMessage(message, origin || approvedOrigin);
+    window.top.postMessage(message, origin || approvedOrigin);
   }
   window.addEventListener('message', function(event){
-    if (event.source !== window.parent || event.origin !== approvedOrigin) return;
+    if (event.source !== window.top || event.origin !== approvedOrigin) return;
     const data = event.data;
     if (!data || typeof data !== 'object') return;
     if (data.type === 'roster:hello' && typeof data.session === 'string' && data.session.length >= 18) {
@@ -28,7 +29,7 @@
       .withFailureHandler(function(err){send({type:'roster:response',session:sid,requestId:requestId,error:String(err&&err.message||err||'後端錯誤')},lastOrigin);})
       .apiRequest(data.payload);
   });
-  send({type:'roster:ready'},approvedOrigin);
+  if (bridgeNonce) send({type:'roster:ready',nonce:bridgeNonce},approvedOrigin);
 })();
 </script>
 </body></html>
