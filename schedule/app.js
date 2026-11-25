@@ -15,7 +15,7 @@ let entries=demo?[
  {id:'sample-3',date:'2026-12-12',participantName:'黃小美',ownerUid:'other-2',ownerName:'李夥伴',ownerEmail:'another@example.test',editorUid:'other-2',editorName:'李夥伴',editorEmail:'another@example.test',createdAt:'2026-11-23T01:30:00Z',updatedAt:'2026-11-23T01:30:00Z'}
 ]:[];
 let loaded=demo,selectedDate=null,saving=false,lastFocus=null,toastHandle=null,loginBusy=false;
-let bridgeReady=false,bridgeOrigin=null,bridgeSession=null,bridgeSeq=0,bridgeResolve=null,bridgeReject=null;
+let bridgeReady=false,bridgeOrigin=null,bridgeWindow=null,bridgeSession=null,expectedBridgeNonce=null,bridgeSeq=0,bridgeResolve=null,bridgeReject=null;
 const pending=new Map();
 let lastSync='';
 const dayString=d=>`${SETTING.year}-${String(SETTING.month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -107,20 +107,22 @@ function exportCsv(){if(!user||!loaded||demo)return;const headers=['日期','星
 // 安全 iframe 橋接：所有資料請求先交由 Apps Script 驗證 ID token，避免把 Email 當成認證。
 function allowedBridgeOrigin(origin){try{const u=new URL(origin);return u.protocol==='https:' && (u.hostname==='script.google.com'||u.hostname==='script.googleusercontent.com'||(u.hostname.endsWith('.googleusercontent.com')&&u.hostname.includes('script')));}catch{return false;}}
 function receiveBridgeMessage(e){
- if(demo||e.source!==$('gasBridge').contentWindow||!allowedBridgeOrigin(e.origin)||!e.data||typeof e.data!=='object')return;
+ if(demo||!allowedBridgeOrigin(e.origin)||!e.data||typeof e.data!=='object')return;
  const d=e.data;
  if(d.type==='roster:ready'){
-   bridgeOrigin=e.origin;bridgeSession=crypto.randomUUID()+crypto.randomUUID();
-   $('gasBridge').contentWindow.postMessage({type:'roster:hello',session:bridgeSession},bridgeOrigin);
- }else if(d.type==='roster:ack'&&d.session===bridgeSession&&e.origin===bridgeOrigin){bridgeReady=true;if(bridgeResolve)bridgeResolve(true);bridgeResolve=null;bridgeReject=null;
- }else if(d.type==='roster:response'&&d.session===bridgeSession&&e.origin===bridgeOrigin){const job=pending.get(d.requestId);if(!job)return;pending.delete(d.requestId);clearTimeout(job.timer);if(d.error)job.reject(new Error(d.error));else if(!d.result?.ok)job.reject(new Error('後端未回傳成功結果'));else job.resolve(d.result);}
+   if(!expectedBridgeNonce||d.nonce!==expectedBridgeNonce)return;
+   bridgeOrigin=e.origin;bridgeWindow=e.source;bridgeSession=crypto.randomUUID()+crypto.randomUUID();
+   bridgeWindow.postMessage({type:'roster:hello',session:bridgeSession},bridgeOrigin);
+ }else if(d.type==='roster:ack'&&e.source===bridgeWindow&&d.session===bridgeSession&&e.origin===bridgeOrigin){bridgeReady=true;if(bridgeResolve)bridgeResolve(true);bridgeResolve=null;bridgeReject=null;
+ }else if(d.type==='roster:response'&&e.source===bridgeWindow&&d.session===bridgeSession&&e.origin===bridgeOrigin){const job=pending.get(d.requestId);if(!job)return;pending.delete(d.requestId);clearTimeout(job.timer);if(d.error)job.reject(new Error(d.error));else if(!d.result?.ok)job.reject(new Error('後端未回傳成功結果'));else job.resolve(d.result);}
 }
 window.addEventListener('message',receiveBridgeMessage);
 function connectBridge(){
  if(demo)return Promise.resolve(false);
  return new Promise((resolve,reject)=>{
    bridgeResolve=resolve;bridgeReject=reject;
-   $('gasBridge').src=CONFIG.appsScriptUrl;
+   expectedBridgeNonce=crypto.randomUUID()+crypto.randomUUID();
+   $('gasBridge').src=CONFIG.appsScriptUrl+'?bridge_nonce='+encodeURIComponent(expectedBridgeNonce);
    setTimeout(()=>{if(!bridgeReady){bridgeResolve=bridgeReject=null;reject(new Error('Apps Script 連線逾時。請確認已發布網頁應用程式，並允許 iframe 嵌入。'));}},16000);
  });
 }
@@ -130,7 +132,7 @@ function requestBackend(action,params={}){
    const requestId=String(++bridgeSeq)+'-'+crypto.randomUUID();
    const timer=setTimeout(()=>{pending.delete(requestId);reject(new Error('伺服器回應逾時，請稍後重新整理。'));},25000);
    pending.set(requestId,{resolve,reject,timer});
-   $('gasBridge').contentWindow.postMessage({type:'roster:request',session:bridgeSession,requestId,payload:{action,idToken,...params}},bridgeOrigin);
+   bridgeWindow.postMessage({type:'roster:request',session:bridgeSession,requestId,payload:{action,idToken,...params}},bridgeOrigin);
  });
 }
 function clearUser(){idToken=null;user=null;entries=[];loaded=false;lastSync='';if(selectedDate)closeDialog();render();}
