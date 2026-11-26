@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f1ed">
-  <meta name="description" content="2026 年 12 月 1–28 日志工排班桌曆，免登入直接登記，可代替夥伴填寫姓名。">
+  <meta name="description" content="2026 年 12 月 1–28 日志工排班桌曆，先選填寫人，再點日期即可登記的免登入月曆。">
   <title>十二月，與你同行｜服務排班日曆</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,21 +29,38 @@
 @media(max-width:780px){.no-login-sign{font-size:10px;padding:7px 10px}.account-actions{max-width:none}.site-header{align-items:center}}
 @media(max-width:425px){.no-login-sign{font-size:9px;padding:6px 8px}.account-actions .button{font-size:10px;padding:7px 9px}.identity strong{font-size:11px}}
 
+
+/* 先選姓名，再以七欄月曆直接登記。 */
+body{font-size:16px}.site-shell{max-width:1440px}.button{font-size:14px}
+.name-gate{min-height:100svh;display:grid;place-items:center;padding:30px 20px;background:radial-gradient(ellipse at 18% 8%,#e5ebe2,transparent 58%),radial-gradient(ellipse at 90% 90%,#eadfda,transparent 56%),var(--cream)}
+.gate-card{width:min(620px,100%);text-align:center;border:1px solid #e1dfd4;background:#fffdf8e8;border-radius:28px;padding:48px 42px;box-shadow:var(--shadow)}
+.gate-month{font-family:Georgia,serif;font-size:62px;color:#7e9587;line-height:1}.gate-month small{display:block;font:600 13px 'Noto Sans TC',sans-serif;letter-spacing:.22em;color:#9a8d83;margin-bottom:14px}
+.gate-card h1{font-family:'Noto Serif TC',serif;font-size:30px;letter-spacing:.06em;color:var(--darkest);margin:25px 0 13px}.gate-card p{font-size:16px;line-height:1.9;color:#7e857c;margin:0}
+.name-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:30px 0 24px}.name-choice{min-height:102px;border:1px solid #cad6c8;border-radius:17px;background:#edf2e9;color:#4f6a59;font-size:24px;font-weight:600;transition:background .2s,transform .2s}.name-choice:nth-child(2){background:#f4e9e5;border-color:#e1c9c3;color:#84635d}.name-choice:nth-child(3){background:#efece1;border-color:#dcd6c3;color:#7e7254}.name-choice:hover{transform:translateY(-3px);filter:brightness(.97)}.gate-note{font-size:13px!important;color:#9b968c!important}
+.intro{min-height:0;padding:25px 38px;align-items:center}.intro h1{font-size:32px;line-height:1.5;margin:12px 0}.intro p{font-size:14px}.hero-big{font-size:100px}.hero-year,.hero-aside-note{display:none}.hero-meta{margin-top:14px}.hero-aside{min-width:130px}.dashboard{margin:22px 0 25px}.dashboard-caption>span:last-child,.number-card small{font-size:13px}.section-heading h2{font-size:26px}.section-heading p{font-size:14px}
+.actor-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border:1px solid #d3ddcf;border-radius:14px;background:#edf2e9;margin-bottom:16px}.actor-toolbar p{margin:0;font-size:14px;color:#788574;line-height:1.7}.actor-toolbar strong{font-size:19px;color:#47634e;margin:0 8px}.actor-toolbar small{display:block;color:#788574;font-size:13px}.switch-actor{white-space:nowrap}.weekday-row{display:grid}.weekday-row span{font-size:14px;color:#7d887a}.weekday-row span:first-child,.weekday-row span:last-child{color:#b18b85}.weekday-row small{font-size:11px;margin-left:4px}.calendar-grid{grid-template-columns:repeat(7,minmax(0,1fr))}.day-blank{display:block;min-height:150px}.day-cell{padding:0;min-height:150px;overflow:hidden;position:relative;cursor:pointer}.day-cell:hover{transform:none}.day-cell.is-own{background:#e7eee3;border-color:#aebfa7}.day-select{display:flex;flex-direction:column;align-items:stretch;width:100%;min-height:86px;border:0;background:transparent;padding:12px 11px 8px;color:var(--ink);text-align:left;gap:8px}.day-select:disabled{opacity:1;cursor:default}.day-select:not(:disabled):hover{background:#e5ede1}.day-select:focus-visible{outline-offset:-4px}.day-head{margin:0;pointer-events:none}.day-number{font-size:27px}.day-count{font-size:12px}.day-action{display:block;margin:0;padding:0;border:0;background:none;min-height:0;font-size:13px;line-height:1.6;color:#738b72}.day-cell.is-own .day-action{color:#506c51}.day-roster{padding:0 8px 10px;min-height:0;max-height:none;gap:6px;overflow:visible}.calendar-person{border:1px solid #e4d9d0;background:#f4ece6;border-radius:8px;padding:6px;display:flex;align-items:center;justify-content:space-between;gap:4px;min-width:0;cursor:default}.calendar-person.is-current{border-color:#c7d5be;background:#e4eddc}.calendar-person-name{font-size:14px;font-weight:600;overflow-wrap:anywhere;line-height:1.5;color:#74665f;min-width:0}.calendar-edit{font-size:12px;border:0;background:#fffaf4b5;border-radius:5px;color:#6a7b62;padding:5px 4px;min-height:30px;flex:none}.calendar-edit:hover{background:#fff}.calendar-foot{font-size:13px}.calendar-topline{font-size:13px}.legend{font-size:13px}.dialog-note{font-size:14px}.dialog-meta{font-size:12px}.person-form label,.form-message,.tiny-button{font-size:14px}.person-form label small{font-size:12px}.dialog-name{font-size:16px}.no-entries{font-size:14px}.current-editor{font-size:14px;line-height:1.7;color:#71816c;margin-top:12px}.current-editor strong{color:#4a654b}.dialog-roster{max-height:280px}.form-row input{font-size:16px}.form-actions{align-items:center}.text-button{font-size:14px}
+@media(max-width:1180px){.calendar-person{flex-direction:column;align-items:stretch;text-align:center}.calendar-edit{width:100%}}
+@media(max-width:780px){.site-shell{padding:16px 12px 28px}.site-header{gap:10px;flex-wrap:wrap;padding-bottom:18px}.intro{padding:22px}.intro h1{font-size:27px}.intro p{font-size:14px}.numbers{gap:6px}.number-card{padding:12px 8px}.number-card small{font-size:12px}.dashboard-caption{margin-bottom:12px}.section-heading{margin-bottom:14px}.section-heading p{font-size:14px}.actor-toolbar{padding:12px;align-items:center}.actor-toolbar strong{font-size:18px;margin:0 4px}.actor-toolbar small{font-size:12px}.actor-toolbar .button{font-size:13px;padding:9px 10px}.calendar-paper{padding:10px 6px 12px;border-radius:16px}.calendar-grid,.weekday-row{grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.weekday-row{display:grid;margin-bottom:6px}.weekday-row span{font-size:14px;padding:6px 0}.weekday-row small{display:none}.day-blank{display:block;min-height:132px;border-radius:7px}.day-cell{min-height:132px;padding:0;border-radius:7px}.day-select{min-height:78px;padding:8px 4px 6px;gap:6px}.day-head{display:block}.day-number{font-size:23px}.day-count{display:block;background:none;padding:0;font-size:11px;margin-top:3px}.day-action{font-size:11px;min-height:18px}.mobile-day{display:none}.day-roster{padding:0 3px 6px;gap:4px}.calendar-person{padding:4px 2px;border-radius:5px;gap:3px}.calendar-person-name{font-size:14px}.calendar-edit{font-size:12px;min-height:30px;padding:4px 0}.calendar-topline{font-size:12px;letter-spacing:.04em;padding:5px 2px 12px;margin-bottom:8px}.calendar-topline span:last-child{font-size:11px}.calendar-foot{font-size:12px;align-items:flex-start}.legend{font-size:12px}.no-login-sign{font-size:12px}.account-actions .button{font-size:12px}.form-row{flex-direction:column}.form-row .button{width:100%}}
+@media(max-width:425px){.site-shell{padding:12px 8px 24px}.gate-card{padding:35px 20px}.gate-card h1{font-size:26px}.name-options{gap:8px}.name-choice{font-size:22px;min-height:88px}.intro{padding:19px}.intro h1{font-size:25px}.calendar-grid,.weekday-row{gap:3px}.calendar-paper{padding:8px 4px 10px}.day-number{font-size:21px}.day-cell,.day-blank{min-height:128px}.day-select{padding-left:3px;padding-right:3px}.day-action{font-size:10px}.actor-toolbar{padding:10px;gap:5px}.actor-toolbar p{font-size:13px}.actor-toolbar strong{font-size:17px}.actor-toolbar .button{font-size:12px;padding:8px}.identity strong{font-size:13px}.identity small{font-size:10px}.calendar-topline span:last-child{font-size:10px}.dialog-row{flex-direction:column;align-items:stretch}.dialog-actions{justify-content:flex-end}.dialog-top h3{font-size:23px}.dialog-meta{font-size:12px}.number-card small{font-size:11px}.number-card strong{font-size:25px}}
+
   </style>
 
 </head>
 <body>
   <div class="page-grain" aria-hidden="true"></div>
-  <div class="site-shell">
+  <section id="nameGate" class="name-gate" aria-labelledby="gateTitle">
+    <div class="gate-card"><div class="gate-month" aria-hidden="true"><small>DECEMBER · 2026</small>12</div><h1 id="gateTitle">先選擇填寫人</h1><p>今天，以誰的名字同行？<br>選好姓名後，點選月曆日期就能登記。</p><div class="name-options" aria-label="選擇填寫人"><button class="name-choice" type="button" data-actor="騰元">騰元</button><button class="name-choice" type="button" data-actor="佳翰">佳翰</button><button class="name-choice" type="button" data-actor="逢時">逢時</button></div><p class="gate-note">免登入，選擇姓名即可開始。進入月曆後可隨時切換。</p></div>
+  </section>
+  <div id="rosterPage" class="site-shell" hidden>
     <header class="site-header">
       <a class="identity" href="./" aria-label="排班網站首頁"><span class="identity-icon" aria-hidden="true"><svg viewBox="0 0 40 40" width="29" height="29" fill="none"><path d="M20 35V9M20 23C12 23 8 16 8 9c9 0 12 5 12 13M20 27c0-8 5-13 13-14 0 8-4 14-13 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><small>DECEMBER / 2026</small><strong>與你同行・服務排班</strong></span></a>
-      <div class="account-actions"><span class="no-login-sign"><span class="no-login-dot"></span> 免登入・直接排班</span><button class="button button-outline" id="exportButton" type="button">↓ 匯出名單</button></div>
+      <div class="account-actions"><span class="no-login-sign"><span class="no-login-dot"></span> 免登入・直接排班</span><button class="button button-outline" id="exportButton" type="button">匯出名單</button></div>
     </header>
 
     <main>
       <section class="intro" aria-labelledby="pageTitle">
         <div class="hero-pattern" aria-hidden="true"><span class="ring ring-one"></span><span class="ring ring-two"></span><span class="ring ring-three"></span><span class="stem"></span><span class="botanical botanical-a"></span><span class="botanical botanical-b"></span></div>
-        <div class="intro-copy"><div class="kicker"><span class="kicker-dot"></span> 十二月的陪伴計畫 <span class="kicker-rule"></span> VOLUNTEER ROSTER</div><h1 id="pageTitle">把日子留給<span>陪伴，</span><br>讓溫柔有了<span>日期。</span></h1><p>不用登入，也不必註冊。<br>點選日期，輸入排班姓名，就能為自己或同行夥伴留下名字。</p><div class="hero-meta"><span class="meta-leaf">✳</span><strong>2026 / 12 / 01</strong><span class="meta-dash"></span><strong>12 / 28</strong><span class="meta-caption">共 28 天</span></div></div>
+        <div class="intro-copy"><div class="kicker"><span class="kicker-dot"></span> 十二月的陪伴計畫 <span class="kicker-rule"></span> VOLUNTEER ROSTER</div><h1 id="pageTitle">把日子留給<span>陪伴，</span><br>讓溫柔有了<span>日期。</span></h1><p>不用登入，也不必註冊。<br>先選姓名，再點選日期，為陪伴留下位置。</p><div class="hero-meta"><span class="meta-leaf">✳</span><strong>2026 / 12 / 01</strong><span class="meta-dash"></span><strong>12 / 28</strong><span class="meta-caption">共 28 天</span></div></div>
         <div class="hero-aside"><div class="hero-year">2026</div><div class="hero-big">12<span>月</span></div><div class="hero-aside-note">THE SEASON<br>OF TOGETHERNESS</div></div>
       </section>
 
@@ -62,9 +79,10 @@
       </section>
 
       <section class="calendar-section" aria-labelledby="calendarTitle">
-        <div class="section-heading"><div class="section-title"><span class="overline">CALENDAR / 十二月</span><h2 id="calendarTitle">選一個日子，<em>留下名字。</em></h2><p>點日期、填兩個名字即可登記；滑鼠移到姓名上可查看填寫／修改人，手機點姓名查看。</p></div><div class="legend"><span><i class="legend-own"></i>已登記日期</span><span><i class="legend-other"></i>尚無登記</span></div></div>
-        <div class="calendar-paper"><div class="calendar-topline"><span><span class="calendar-top-icon">✺</span> DECEMBER 2026</span><span>01 — 28 <span class="topline-mid">/</span> SERVICE SCHEDULE</span></div><div class="weekday-row" aria-hidden="true"><span>日 SUN</span><span>一 MON</span><span>二 TUE</span><span>三 WED</span><span>四 THU</span><span>五 FRI</span><span>六 SAT</span></div><div id="calendar" class="calendar-grid" aria-live="polite"></div></div>
-        <div class="calendar-foot"><span class="foot-flower">✳</span><p>可以替朋友、志工或家人登記。<strong>編輯者名稱由本人填寫，不經身分驗證；任何知道網址的人都可能修改名單。</strong>請勿填寫電話、Email 或其他敏感資訊。</p></div>
+        <div class="section-heading"><div class="section-title"><span class="overline">CALENDAR / 十二月</span><h2 id="calendarTitle" tabindex="-1">選一個日子，<em>留下名字。</em></h2><p>點選日期即可登記目前姓名；需要調整時，按姓名旁的「修改」。</p></div><div class="legend"><span><i class="legend-own"></i>已登記日期</span><span><i class="legend-other"></i>尚無登記</span></div></div>
+        <div class="actor-toolbar"><p>目前填寫人 <strong id="currentActorName"></strong><small>點日期，直接登記這個姓名</small></p><button id="switchActor" class="button button-outline switch-actor" type="button">切換填寫人</button></div>
+        <div class="calendar-paper"><div class="calendar-topline"><span><span class="calendar-top-icon">✺</span> DECEMBER 2026</span><span>01 — 28 <span class="topline-mid">/</span> SERVICE SCHEDULE</span></div><div class="weekday-row" aria-hidden="true"><span>日<small>SUN</small></span><span>一<small>MON</small></span><span>二<small>TUE</small></span><span>三<small>WED</small></span><span>四<small>THU</small></span><span>五<small>FRI</small></span><span>六<small>SAT</small></span></div><div id="calendar" class="calendar-grid" aria-live="polite"></div></div>
+        <div class="calendar-foot"><span class="foot-flower">✳</span><p>先選姓名，再點日期即可登記。<strong>編輯者名稱由本人填寫，不經身分驗證；任何知道網址的人都可能修改名單。</strong>請勿填寫電話、Email 或其他敏感資訊。</p></div>
       </section>
     </main>
 
@@ -72,7 +90,7 @@
   </div>
 
   <div id="hoverInfo" class="hover-info" role="tooltip" hidden></div>
-  <div id="dialogBackdrop" class="dialog-backdrop" hidden><section class="edit-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogHeading"><div class="dialog-top"><div><span id="dialogSubtitle" class="overline">DECEMBER 2026</span><h3 id="dialogHeading">12 月 1 日</h3></div><button id="closeDialog" class="close-button" type="button" aria-label="關閉">×</button></div><div class="dialog-body"><div class="dialog-note">免登入即可登記與修改。<strong>「填寫人」是自行輸入的姓名，無法核實真實身分。</strong></div><div id="dialogRoster" class="dialog-roster"></div><form id="personForm" class="person-form"><input type="hidden" id="editingId"><label for="actorName">誰來填寫？<small>輸入操作人的姓名，下次會自動帶入</small></label><div class="form-row actor-form-row"><input id="actorName" type="text" maxlength="40" autocomplete="name" placeholder="例如：小美（填寫人）" required></div><label for="participantName"><span id="formLabel">新增排班姓名</span><small>最多 40 字，可代替他人登記</small></label><div class="form-row"><input id="participantName" type="text" maxlength="40" autocomplete="off" placeholder="請輸入登記姓名" required><button id="saveButton" class="button button-primary" type="submit">＋ 確認登記</button></div><div class="form-actions"><button id="cancelEdit" class="text-button" type="button" hidden>取消修改</button><span id="formMessage" class="form-message" role="status"></span></div></form></div></section></div>
+  <div id="dialogBackdrop" class="dialog-backdrop" hidden><section class="edit-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogHeading"><div class="dialog-top"><div><span class="overline">DECEMBER 2026</span><h3 id="dialogHeading">修改排班</h3></div><button id="closeDialog" class="close-button" type="button" aria-label="關閉">×</button></div><div class="dialog-body"><div class="dialog-note">可修改登記姓名或取消登記。<strong>填寫人姓名為自行選擇，未經身分驗證。</strong></div><div class="current-editor">本次修改人：<strong id="dialogActor"></strong></div><div id="dialogRoster" class="dialog-roster"></div><form id="personForm" class="person-form" hidden><input type="hidden" id="editingId"><label for="participantName">修改排班姓名<small>最多 40 字</small></label><div class="form-row"><input id="participantName" type="text" maxlength="40" autocomplete="off" placeholder="請輸入登記姓名" required><button id="saveButton" class="button button-primary" type="submit">儲存修改</button></div><div class="form-actions"><button id="cancelEdit" class="text-button" type="button">放棄修改</button><span id="formMessage" class="form-message" role="status"></span></div></form></div></section></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <iframe id="gasBridge" title="排班資料連線" hidden aria-hidden="true"></iframe>
   <script>
@@ -84,16 +102,17 @@ window.ROSTER_CONFIG = {
   </script>
   <script>
 /* 12 月排班桌曆｜免登入 + Google Sheets / Apps Script。編輯人為自行填寫，非身分驗證。 */
-'use strict';
+"use strict";
 const CFG=window.ROSTER_CONFIG||{};
 const ONLINE=/^https:\/\/script\.google\.com\/macros\/s\/[a-zA-Z0-9_-]+\/exec$/.test(CFG.appsScriptUrl||'');
 const DEMO=!ONLINE;
 const $=id=>document.getElementById(id);
 const weekdays=['日','一','二','三','四','五','六'];
+const actorNames=['騰元','佳翰','逢時'];
 const safeGet=(key,fallback='')=>{try{return localStorage.getItem(key)||fallback;}catch{return fallback;}};
 const safeSet=(key,value)=>{try{localStorage.setItem(key,value);}catch{}};
 const sample=()=>{try{const e=JSON.parse(safeGet('morandi-roster-preview-v3','[]'));return Array.isArray(e)?e:[];}catch{return []}};
-let entries=DEMO?sample():[],loaded=DEMO,selectedDate=null,saving=false,lastFocus=null,toastHandle=null,lastSync='';
+let entries=DEMO?sample():[],loaded=DEMO,selectedActor='',selectedDate=null,saving=false,lastFocus=null,toastHandle=null,lastSync='',mutationVersion=0;
 let ready=false,bridgeOrigin=null,bridgeWindow=null,bridgeSession=null,bridgeNonce=null,bridgeSeq=0;
 const pending=new Map();
 const dateOf=d=>`2026-12-${String(d).padStart(2,'0')}`;
@@ -105,53 +124,85 @@ function el(tag,cls,content){const x=document.createElement(tag);if(cls)x.classN
 function toast(msg,bad=false){const e=$('toast');e.textContent=msg;e.classList.toggle('error',bad);e.classList.add('visible');clearTimeout(toastHandle);toastHandle=setTimeout(()=>e.classList.remove('visible'),3500);}
 function error(msg=''){$('errorBanner').hidden=!msg;$('errorBanner').textContent=msg;}
 function persist(){if(DEMO)safeSet('morandi-roster-preview-v3',JSON.stringify(entries));}
-function actorDetails(item){return `排班：${item.participantName}\n填寫人（自填）：${item.ownerName||'未提供'}\n登記時間：${fmt(item.createdAt)}\n最後修改人（自填）：${item.editorName||'未提供'}\n修改時間：${fmt(item.updatedAt)}\n＊操作人姓名未經驗證`}
+function actorDetails(item){return `排班：${item.participantName}\n填寫人（自選）：${item.ownerName||'未提供'}\n登記時間：${fmt(item.createdAt)}\n最後修改人（自選）：${item.editorName||'未提供'}\n修改時間：${fmt(item.updatedAt)}\n＊姓名未經驗證`;}
 function hover(ev,item){if(matchMedia('(hover:none)').matches)return;const tip=$('hoverInfo');tip.textContent=actorDetails(item);tip.hidden=false;const r=ev.currentTarget.getBoundingClientRect();const x=ev.clientX||r.left,y=ev.clientY||r.top;tip.style.left=Math.max(8,Math.min(x+14,innerWidth-tip.offsetWidth-10))+'px';tip.style.top=Math.max(8,Math.min(y+12,innerHeight-tip.offsetHeight-12))+'px';}
 function clearTip(){$('hoverInfo').hidden=true;}
+function chooseActor(name){if(saving||!actorNames.includes(name))return;closeDialog();selectedActor=name;$('currentActorName').textContent=name;$('nameGate').hidden=true;$('rosterPage').hidden=false;render();$('calendarTitle').focus();}
+function switchActor(){if(saving)return;closeDialog();$('rosterPage').hidden=true;$('nameGate').hidden=false;document.querySelector(`[data-actor="${selectedActor}"]`)?.focus();}
 function status(){
  $('demoBanner').hidden=!DEMO;
  $('statusText').textContent=DEMO?'本機示範・尚未多人共用':!loaded?'正在讀取共用排班…':`已連接 Google 試算表${lastSync?'・更新於 '+lastSync:''}`;
  if(!loaded){for(const x of ['daysCount','peopleCount','myCount'])$(x).textContent='—';return;}
- const rows=entries.filter(x=>validDate(x.date));const days=new Set(rows.map(x=>x.date));
+ const rows=entries.filter(x=>validDate(x.date)),days=new Set(rows.map(x=>x.date));
  $('daysCount').textContent=String(days.size);$('peopleCount').textContent=String(rows.length);$('myCount').textContent=String(28-days.size);
 }
 function calendar(){
- const root=$('calendar');root.replaceChildren();const start=new Date(2026,11,1,12).getDay();if(innerWidth>780)for(let i=0;i<start;i++)root.append(el('div','day-blank'));
+ const root=$('calendar');root.replaceChildren();const start=new Date(2026,11,1,12).getDay();
+ for(let i=0;i<start;i++){const blank=el('div','day-blank');blank.setAttribute('aria-hidden','true');root.append(blank);}
  const today=new Date();
  for(let d=1;d<=28;d++){
   const date=dateOf(d),list=loaded?entries.filter(x=>x.date===date).sort((a,b)=>a.participantName.localeCompare(b.participantName,'zh-Hant')):[];
-  const box=el('article','day-cell'+(list.length?' has-own':'')+(today.getFullYear()===2026&&today.getMonth()===11&&today.getDate()===d?' today':''));
-  const heading=el('div','day-head'),number=el('div');number.append(el('span','day-number',String(d)),el('span','mobile-day','週'+weekdays[new Date(2026,11,d,12).getDay()]));heading.append(number,el('span','day-count',loaded?list.length+' 人':'—'));box.append(heading);
+  const mine=list.some(x=>x.participantName===selectedActor);
+  const box=el('article','day-cell'+(list.length?' has-own':'')+(mine?' is-own':'')+(today.getFullYear()===2026&&today.getMonth()===11&&today.getDate()===d?' today':''));
+  const select=el('button','day-select');select.type='button';select.disabled=!loaded||!selectedActor||saving||mine;
+  select.setAttribute('aria-label',`${mine?selectedActor+'已登記':'登記 '+selectedActor}：${dayLabel(date)}`);
+  const heading=el('span','day-head');heading.append(el('span','day-number',String(d)),el('span','day-count',loaded?list.length+' 人':'—'));
+  select.append(heading,el('span','day-action',!loaded?'載入中':saving?'儲存中':mine?'已登記':'＋ 登記'));
+  select.addEventListener('click',()=>quickAdd(date));box.append(select);
   const roster=el('div','day-roster');roster.setAttribute('aria-label',dayLabel(date)+'排班名單');
-  if(!loaded)roster.append(el('span','empty-day','載入中…'));
-  else if(!list.length)roster.append(el('span','empty-day','等待第一位夥伴'));
-  else for(const item of list){const chip=el('button','person-chip',item.participantName);chip.type='button';chip.setAttribute('aria-label',`查看 ${item.participantName} 的編輯資訊`);chip.addEventListener('pointerenter',e=>hover(e,item));chip.addEventListener('pointermove',e=>hover(e,item));chip.addEventListener('pointerleave',clearTip);chip.addEventListener('blur',clearTip);chip.addEventListener('focus',e=>hover(e,item));chip.addEventListener('click',()=>openDialog(date,item.id));roster.append(chip);}
-  box.append(roster);const button=el('button','day-action',loaded?'+ 登記／查看':'載入中…');button.type='button';button.disabled=!loaded;button.addEventListener('click',()=>openDialog(date));box.append(button);root.append(box);
+  for(const item of list){
+   const row=el('div','calendar-person'+(item.participantName===selectedActor?' is-current':'')),name=el('span','calendar-person-name',item.participantName),edit=el('button','calendar-edit','修改');
+   edit.type='button';edit.disabled=saving;edit.setAttribute('aria-label',`修改 ${dayLabel(date)} 的 ${item.participantName}`);
+   edit.addEventListener('click',event=>{event.stopPropagation();openDialog(date,item.id);});
+   name.title=actorDetails(item);name.addEventListener('pointerenter',e=>hover(e,item));name.addEventListener('pointermove',e=>hover(e,item));name.addEventListener('pointerleave',clearTip);
+   row.append(name,edit);roster.append(row);
+  }
+  box.addEventListener('click',event=>{if(!event.target.closest('button,.calendar-person'))quickAdd(date);});
+  box.append(roster);root.append(box);
  }
- if(innerWidth>780){for(let i=(7-(start+28)%7)%7;i>0;i--)root.append(el('div','day-blank'));}
+ for(let i=(7-(start+28)%7)%7;i>0;i--){const blank=el('div','day-blank');blank.setAttribute('aria-hidden','true');root.append(blank);}
 }
-function render(){status();calendar();if(selectedDate)dialogRoster();}
-function resetForm(){$('editingId').value='';$('participantName').value='';$('formLabel').textContent='新增排班姓名';$('saveButton').textContent='＋ 確認登記';$('cancelEdit').hidden=true;$('formMessage').textContent='';}
-function openDialog(date,id){if(!loaded||!validDate(date))return;selectedDate=date;lastFocus=document.activeElement;clearTip();$('dialogHeading').textContent=dayLabel(date);$('dialogBackdrop').hidden=false;document.body.classList.add('dialog-open');resetForm();$('actorName').value=safeGet('morandi-roster-actor','');dialogRoster();if(id){const row=entries.find(x=>x.date===date&&x.id===id);if(row)$('formMessage').textContent='最後修改：'+(row.editorName||'未提供')+'／'+fmt(row.updatedAt);}$('closeDialog').focus();}
-function closeDialog(){selectedDate=null;$('dialogBackdrop').hidden=true;document.body.classList.remove('dialog-open');clearTip();if(lastFocus?.isConnected)lastFocus.focus();}
-function editEntry(item){$('editingId').value=item.id;$('participantName').value=item.participantName;$('formLabel').textContent='修改排班姓名';$('saveButton').textContent='儲存修改';$('cancelEdit').hidden=false;$('formMessage').textContent='修改人將記錄為「填寫人」欄位輸入的姓名';$('participantName').focus();}
-function dialogRoster(){if(!selectedDate)return;const host=$('dialogRoster');host.replaceChildren();const list=entries.filter(x=>x.date===selectedDate);if(!list.length){host.append(el('div','no-entries','這一天還沒有人登記，歡迎留下名字。'));return;}
- for(const item of list){const row=el('div','dialog-row'),info=el('div');info.style.minWidth='0';info.append(el('div','dialog-name',item.participantName),el('div','dialog-meta','填寫人（自填）：'+(item.ownerName||'未提供')+'・'+fmt(item.createdAt)),el('div','dialog-meta','最後修改（自填）：'+(item.editorName||'未提供')+'・'+fmt(item.updatedAt)));const act=el('div','dialog-actions'),edit=el('button','tiny-button','修改'),remove=el('button','tiny-button danger','取消');edit.type=remove.type='button';edit.addEventListener('click',()=>editEntry(item));remove.addEventListener('click',()=>deleteEntry(item));act.append(edit,remove);row.append(info,act);host.append(row);}}
+function render(){status();calendar();$('switchActor').disabled=saving;if(selectedDate)dialogRoster();$('saveButton').disabled=saving;$('cancelEdit').disabled=saving;$('closeDialog').disabled=saving;}
+function resetForm(){$('editingId').value='';$('participantName').value='';$('formMessage').textContent='';$('personForm').hidden=true;}
+function openDialog(date,id){if(saving||!loaded||!selectedActor||!validDate(date))return;selectedDate=date;lastFocus=document.activeElement;clearTip();$('dialogHeading').textContent=dayLabel(date);$('dialogActor').textContent=selectedActor;$('dialogBackdrop').hidden=false;document.body.classList.add('dialog-open');resetForm();dialogRoster();const item=entries.find(x=>x.id===id&&x.date===date);if(item)editEntry(item);else $('closeDialog').focus();}
+function closeDialog(){if(saving)return;selectedDate=null;$('dialogBackdrop').hidden=true;document.body.classList.remove('dialog-open');clearTip();if(lastFocus?.isConnected)lastFocus.focus();}
+function editEntry(item){if(saving)return;$('editingId').value=item.id;$('participantName').value=item.participantName;$('personForm').hidden=false;$('formMessage').textContent='修改人：'+selectedActor;$('participantName').focus();}
+function dialogRoster(){if(!selectedDate)return;const host=$('dialogRoster');host.replaceChildren();const list=entries.filter(x=>x.date===selectedDate);if(!list.length){host.append(el('div','no-entries','這一天已沒有登記。關閉後可點日期重新登記。'));return;}
+ for(const item of list){const row=el('div','dialog-row'),info=el('div');info.style.minWidth='0';info.append(el('div','dialog-name',item.participantName),el('div','dialog-meta','填寫人（自選）：'+(item.ownerName||'未提供')+'・'+fmt(item.createdAt)),el('div','dialog-meta','最後修改（自選）：'+(item.editorName||'未提供')+'・'+fmt(item.updatedAt)));const act=el('div','dialog-actions'),edit=el('button','tiny-button','修改姓名'),remove=el('button','tiny-button danger','取消登記');edit.type=remove.type='button';edit.disabled=remove.disabled=saving;edit.addEventListener('click',()=>editEntry(item));remove.addEventListener('click',()=>deleteEntry(item));act.append(edit,remove);row.append(info,act);host.append(row);}}
 function nameCheck(v){const name=tidy(v);if(!name||[...name].length>40||/[\x00-\x1f\x7f]/.test(name)||/^[=+\-@]/.test(name))throw new Error('姓名必須為 1–40 字，不能以 = + - @ 開頭');return name;}
-async function saveEntry(ev){ev.preventDefault();if(saving||!loaded||!selectedDate)return;let participant,actor;try{participant=nameCheck($('participantName').value);actor=nameCheck($('actorName').value);}catch(e){$('formMessage').textContent=e.message;return;}
- const editId=$('editingId').value,old=entries.find(x=>x.id===editId);if(editId&&(!old||old.date!==selectedDate)){toast('找不到要修改的紀錄',true);return;}
- if(entries.some(x=>x.date===selectedDate&&x.id!==editId&&tidy(x.participantName).toLocaleLowerCase()===participant.toLocaleLowerCase())){$('formMessage').textContent='這一天已有相同姓名，請先確認是否重複';return;}
- saving=true;$('saveButton').disabled=true;$('formMessage').textContent='儲存中…';error('');
- try{let list;if(DEMO){const time=new Date().toISOString();if(editId){Object.assign(old,{participantName:participant,editorName:actor,updatedAt:time});}else{entries.push({id:'local-'+Date.now()+'-'+Math.floor(Math.random()*1e6),date:selectedDate,participantName:participant,ownerName:actor,editorName:actor,createdAt:time,updatedAt:time});}persist();list=entries;}else{const reply=await request(editId?'update':'add',editId?{id:editId,participantName:participant,actorName:actor}:{date:selectedDate,participantName:participant,actorName:actor});list=reply.entries||[];}
- entries=list;lastSync='剛剛';safeSet('morandi-roster-actor',actor);resetForm();render();toast((editId?'已修改':'已登記')+'：'+participant+(DEMO?'（僅此裝置）':''));}
- catch(e){error('儲存失敗：'+e.message);$('formMessage').textContent=e.message;toast('無法儲存，請檢查連線',true);}finally{saving=false;$('saveButton').disabled=false;}
+async function quickAdd(date){
+ if(saving||!loaded||!selectedActor||!validDate(date))return;
+ const actor=selectedActor;
+ if(entries.some(x=>x.date===date&&x.participantName===actor)){toast(actor+'這一天已登記');return;}
+ saving=true;mutationVersion++;render();error('');let resync=false;
+ try{
+  if(DEMO){const time=new Date().toISOString();entries.push({id:'local-'+crypto.randomUUID(),date,participantName:actor,ownerName:actor,editorName:actor,createdAt:time,updatedAt:time});persist();}
+  else{const reply=await request('add',{date,participantName:actor,actorName:actor});entries=reply.entries||[];}
+  lastSync='剛剛';toast(`已登記：${actor}・12 月 ${Number(date.slice(-2))} 日`+(DEMO?'（僅此裝置）':''));
+ }catch(e){resync=true;if(e.message.includes('同一天已有相同姓名'))toast(actor+'這一天已登記');else{error('登記未確認：'+e.message+'。請先確認月曆結果再重試。');toast('請先確認登記結果',true);}}
+ finally{saving=false;render();if(resync&&ONLINE)refresh();}
 }
-async function deleteEntry(item){if(saving)return;let actor;try{actor=nameCheck($('actorName').value);}catch(e){$('formMessage').textContent='請先填寫「誰來填寫」，再取消登記';$('actorName').focus();return;}
- if(!confirm(`確定取消 ${dayLabel(item.date)} 的「${item.participantName}」嗎？\n操作人：${actor}`))return;
- saving=true;error('');try{if(DEMO){entries=entries.filter(x=>x.id!==item.id);persist();}else{const res=await request('delete',{id:item.id,actorName:actor});entries=res.entries||[];}safeSet('morandi-roster-actor',actor);lastSync='剛剛';if($('editingId').value===item.id)resetForm();render();toast('已取消登記'+(DEMO?'（僅此裝置）':''));}
- catch(e){error('取消失敗：'+e.message);toast('取消失敗',true);}finally{saving=false;}}
+async function saveEntry(ev){
+ ev.preventDefault();if(saving||!loaded||!selectedDate||!selectedActor)return;
+ const editId=$('editingId').value,old=entries.find(x=>x.id===editId),actor=selectedActor;let participant;
+ if(!old||old.date!==selectedDate){$('formMessage').textContent='找不到這筆登記，可能已被取消';return;}
+ try{participant=nameCheck($('participantName').value);}catch(e){$('formMessage').textContent=e.message;return;}
+ if(entries.some(x=>x.date===selectedDate&&x.id!==editId&&tidy(x.participantName).toLocaleLowerCase()===participant.toLocaleLowerCase())){$('formMessage').textContent='這一天已有相同姓名';return;}
+ saving=true;mutationVersion++;render();$('formMessage').textContent='儲存中…';error('');
+ try{if(DEMO){Object.assign(old,{participantName:participant,editorName:actor,updatedAt:new Date().toISOString()});persist();}else{const reply=await request('update',{id:editId,participantName:participant,actorName:actor});entries=reply.entries||[];}lastSync='剛剛';resetForm();toast('已修改：'+participant);}
+ catch(e){error('修改失敗：'+e.message);$('formMessage').textContent=e.message;toast('修改未完成，請確認連線',true);}
+ finally{saving=false;render();}
+}
+async function deleteEntry(item){
+ if(saving||!selectedActor)return;const actor=selectedActor;
+ if(!confirm(`確定取消 ${dayLabel(item.date)} 的「${item.participantName}」嗎？\n修改人：${actor}`))return;
+ saving=true;mutationVersion++;render();error('');
+ try{if(DEMO){entries=entries.filter(x=>x.id!==item.id);persist();}else{const reply=await request('delete',{id:item.id,actorName:actor});entries=reply.entries||[];}lastSync='剛剛';if($('editingId').value===item.id)resetForm();toast('已取消登記');}
+ catch(e){error('取消失敗：'+e.message);toast('取消未完成',true);}
+ finally{saving=false;render();}
+}
 function csvCell(v){let x=String(v??'');if(/^\s*[=+\-@\t\r]/.test(x))x="'"+x;return '"'+x.replace(/"/g,'""')+'"';}
-function exportCsv(){if(!loaded)return;const head=['日期','星期','排班姓名','填寫人（自填）','建立時間','最後修改人（自填）','修改時間'];const data=[head,...entries.filter(x=>validDate(x.date)).sort((a,b)=>a.date.localeCompare(b.date)).map(x=>[x.date,'星期'+weekdays[new Date(2026,11,Number(x.date.slice(-2)),12).getDay()],x.participantName,x.ownerName,fmt(x.createdAt),x.editorName,fmt(x.updatedAt)])];const blob=new Blob(['\ufeff'+data.map(row=>row.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='2026年12月_志工排班'+(DEMO?'_本機示範':'')+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('已匯出排班 CSV');}
+function exportCsv(){if(!loaded)return;const head=['日期','星期','排班姓名','填寫人（自選）','建立時間','最後修改人（自選）','修改時間'];const data=[head,...entries.filter(x=>validDate(x.date)).sort((a,b)=>a.date.localeCompare(b.date)).map(x=>[x.date,'星期'+weekdays[new Date(2026,11,Number(x.date.slice(-2)),12).getDay()],x.participantName,x.ownerName,fmt(x.createdAt),x.editorName,fmt(x.updatedAt)])];const blob=new Blob(['\ufeff'+data.map(row=>row.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='2026年12月_志工排班'+(DEMO?'_本機示範':'')+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('已匯出排班 CSV');}
 // iframe 只處理跨網域通訊；匿名版本不驗證使用者身份。
 function allowedOrigin(s){try{const u=new URL(s);return u.protocol==='https:'&&(u.hostname==='script.google.com'||u.hostname==='script.googleusercontent.com'||(u.hostname.endsWith('.googleusercontent.com')&&u.hostname.includes('script')));}catch{return false;}}
 window.addEventListener('message',ev=>{if(DEMO||!allowedOrigin(ev.origin)||!ev.data||typeof ev.data!=='object')return;const msg=ev.data;
@@ -160,9 +211,9 @@ window.addEventListener('message',ev=>{if(DEMO||!allowedOrigin(ev.origin)||!ev.d
  else if(msg.type==='roster:response'&&ev.source===bridgeWindow&&ev.origin===bridgeOrigin&&msg.session===bridgeSession){const job=pending.get(msg.requestId);if(!job)return;pending.delete(msg.requestId);clearTimeout(job.timer);if(msg.error)job.reject(new Error(msg.error));else if(!msg.result?.ok)job.reject(new Error('後端沒有回傳成功訊息'));else job.resolve(msg.result);}
 });
 function request(action,payload={}){if(!ready)return Promise.reject(new Error('尚未接通 Google 試算表'));return new Promise((resolve,reject)=>{const requestId=(++bridgeSeq)+'-'+crypto.randomUUID(),timer=setTimeout(()=>{pending.delete(requestId);reject(new Error('回應逾時，請重新整理頁面'));},25000);pending.set(requestId,{resolve,reject,timer});bridgeWindow.postMessage({type:'roster:request',session:bridgeSession,requestId,payload:{action,...payload}},bridgeOrigin);});}
-async function refresh(){if(!ready||saving)return;try{const result=await request('list');entries=result.entries||[];loaded=true;lastSync='剛剛';error('');render();}catch(e){error('連線 Google 試算表失敗：'+e.message);$('statusText').textContent='無法連線，請檢查 Apps Script';}}
+async function refresh(){if(!ready||saving)return;const version=mutationVersion;try{const result=await request('list');if(saving||version!==mutationVersion)return;entries=result.entries||[];loaded=true;lastSync='剛剛';error('');render();}catch(e){if(saving||version!==mutationVersion)return;error('連線 Google 試算表失敗：'+e.message);$('statusText').textContent='無法連線，請檢查 Apps Script';}}
 function connect(){bridgeNonce=crypto.randomUUID()+crypto.randomUUID();$('gasBridge').src=CFG.appsScriptUrl+'?bridge_nonce='+encodeURIComponent(bridgeNonce);setTimeout(()=>{if(!ready){error('尚未連上 Google 試算表。請檢查 Apps Script 是否部署為「執行身分：我」及「存取：所有人」。');$('statusText').textContent='目前無法連線';}},16000);}
-$('exportButton').addEventListener('click',exportCsv);$('closeDialog').addEventListener('click',closeDialog);$('cancelEdit').addEventListener('click',resetForm);$('personForm').addEventListener('submit',saveEntry);$('dialogBackdrop').addEventListener('click',e=>{if(e.target===$('dialogBackdrop'))closeDialog();});
+document.querySelectorAll('[data-actor]').forEach(button=>button.addEventListener('click',()=>chooseActor(button.dataset.actor)));$('switchActor').addEventListener('click',switchActor);$('exportButton').addEventListener('click',exportCsv);$('closeDialog').addEventListener('click',closeDialog);$('cancelEdit').addEventListener('click',resetForm);$('personForm').addEventListener('submit',saveEntry);$('dialogBackdrop').addEventListener('click',e=>{if(e.target===$('dialogBackdrop'))closeDialog();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&selectedDate)closeDialog();if(e.key==='Tab'&&selectedDate){const visible=[...$('dialogBackdrop').querySelectorAll('button:not([hidden]):not([disabled]),input:not([hidden]):not([disabled])')].filter(x=>x.getClientRects().length);if(!visible.length)return;if(e.shiftKey&&document.activeElement===visible[0]){visible.at(-1).focus();e.preventDefault();}else if(!e.shiftKey&&document.activeElement===visible.at(-1)){visible[0].focus();e.preventDefault();}}});
 window.addEventListener('resize',()=>{clearTip();calendar();});window.addEventListener('scroll',clearTip,{passive:true});
 setInterval(()=>{if(ONLINE&&ready&&!saving)refresh();},30000);
