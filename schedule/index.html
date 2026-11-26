@@ -8,7 +8,9 @@
   <title>十二月，與你同行｜服務排班日曆</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="dns-prefetch" href="https://script.googleusercontent.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <style>
 :root{color-scheme:light;--ink:#414a48;--dark:#576a66;--darkest:#3d524e;--muted:#838a85;--sage:#859c93;--sage-pale:#edf1eb;--rose:#c5a8a5;--rose-pale:#f5eae7;--sand:#dfd5c8;--cream:#f8f5f0;--paper:#fffcf8;--line:#e8e2d9;--red:#a96763;--shadow:0 22px 55px rgba(74,69,63,.06)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,'PingFang TC',sans-serif;font-size:14px}body.dialog-open{overflow:hidden}[hidden]{display:none!important}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.54;cursor:not-allowed}button:focus-visible,input:focus-visible{outline:3px solid #ccaba1;outline-offset:3px}.page-grain{position:fixed;pointer-events:none;inset:0;opacity:.12;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 180 180%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.65%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%22.1%22/%3E%3C/svg%3E');z-index:-1}.site-shell{max-width:1410px;margin:auto;padding:25px 34px 38px}
@@ -49,7 +51,7 @@ body{font-size:16px}.site-shell{max-width:1440px}.button{font-size:14px}
 <body>
   <div class="page-grain" aria-hidden="true"></div>
   <section id="nameGate" class="name-gate" aria-labelledby="gateTitle">
-    <div class="gate-card"><div class="gate-month" aria-hidden="true"><small>DECEMBER · 2026</small>12</div><h1 id="gateTitle">先選擇填寫人</h1><p>今天，以誰的名字同行？<br>選好姓名後，點選月曆日期就能登記。</p><div class="name-options" aria-label="選擇填寫人"><button class="name-choice" type="button" data-actor="騰元">騰元</button><button class="name-choice" type="button" data-actor="佳翰">佳翰</button><button class="name-choice" type="button" data-actor="逢時">逢時</button></div><p class="gate-note">免登入，選擇姓名即可開始。進入月曆後可隨時切換。</p></div>
+    <div class="gate-card"><div class="gate-month" aria-hidden="true"><small>DECEMBER · 2026</small>12</div><h1 id="gateTitle">先選擇填寫人</h1><p>今天，以誰的名字同行？<br>選好姓名後，點選月曆日期就能登記。</p><div class="name-options" aria-label="選擇填寫人"><button class="name-choice" type="button" data-actor="騰元">騰元</button><button class="name-choice" type="button" data-actor="佳翰">佳翰</button><button class="name-choice" type="button" data-actor="逢時">逢時</button></div><p class="gate-note">免登入，選擇姓名即可開始。進入月曆後可隨時切換。</p><p id="gateStatus" class="gate-note" role="status">正在同步最新排班…</p></div>
   </section>
   <div id="rosterPage" class="site-shell" hidden>
     <header class="site-header">
@@ -122,7 +124,7 @@ const tidy=s=>String(s??'').replace(/\s+/g,' ').trim();
 function fmt(v){if(!v)return '—';const d=new Date(v);if(!Number.isFinite(d.getTime()))return String(v);return new Intl.DateTimeFormat('zh-TW',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(d);}
 function el(tag,cls,content){const x=document.createElement(tag);if(cls)x.className=cls;if(content!==undefined)x.textContent=content;return x;}
 function toast(msg,bad=false){const e=$('toast');e.textContent=msg;e.classList.toggle('error',bad);e.classList.add('visible');clearTimeout(toastHandle);toastHandle=setTimeout(()=>e.classList.remove('visible'),3500);}
-function error(msg=''){$('errorBanner').hidden=!msg;$('errorBanner').textContent=msg;}
+function error(msg=''){$('errorBanner').hidden=!msg;$('errorBanner').textContent=msg;if(msg)$('gateStatus').textContent='連線暫時未完成，請重新整理再試';}
 function persist(){if(DEMO)safeSet('morandi-roster-preview-v3',JSON.stringify(entries));}
 function actorDetails(item){return `排班：${item.participantName}\n填寫人（自選）：${item.ownerName||'未提供'}\n登記時間：${fmt(item.createdAt)}\n最後修改人（自選）：${item.editorName||'未提供'}\n修改時間：${fmt(item.updatedAt)}\n＊姓名未經驗證`;}
 function hover(ev,item){if(matchMedia('(hover:none)').matches)return;const tip=$('hoverInfo');tip.textContent=actorDetails(item);tip.hidden=false;const r=ev.currentTarget.getBoundingClientRect();const x=ev.clientX||r.left,y=ev.clientY||r.top;tip.style.left=Math.max(8,Math.min(x+14,innerWidth-tip.offsetWidth-10))+'px';tip.style.top=Math.max(8,Math.min(y+12,innerHeight-tip.offsetHeight-12))+'px';}
@@ -131,6 +133,7 @@ function chooseActor(name){if(saving||!actorNames.includes(name))return;closeDia
 function switchActor(){if(saving)return;closeDialog();$('rosterPage').hidden=true;$('nameGate').hidden=false;document.querySelector(`[data-actor="${selectedActor}"]`)?.focus();}
 function status(){
  $('demoBanner').hidden=!DEMO;
+ $('gateStatus').textContent=DEMO?'本機示範模式':loaded?'最新排班已就緒':'正在同步最新排班…';
  $('statusText').textContent=DEMO?'本機示範・尚未多人共用':!loaded?'正在讀取共用排班…':`已連接 Google 試算表${lastSync?'・更新於 '+lastSync:''}`;
  if(!loaded){for(const x of ['daysCount','peopleCount','myCount'])$(x).textContent='—';return;}
  const rows=entries.filter(x=>validDate(x.date)),days=new Set(rows.map(x=>x.date));
@@ -207,7 +210,7 @@ function exportCsv(){if(!loaded)return;const head=['日期','星期','排班姓�
 function allowedOrigin(s){try{const u=new URL(s);return u.protocol==='https:'&&(u.hostname==='script.google.com'||u.hostname==='script.googleusercontent.com'||(u.hostname.endsWith('.googleusercontent.com')&&u.hostname.includes('script')));}catch{return false;}}
 window.addEventListener('message',ev=>{if(DEMO||!allowedOrigin(ev.origin)||!ev.data||typeof ev.data!=='object')return;const msg=ev.data;
  if(msg.type==='roster:ready'&&msg.nonce===bridgeNonce){bridgeOrigin=ev.origin;bridgeWindow=ev.source;bridgeSession=crypto.randomUUID()+crypto.randomUUID();bridgeWindow.postMessage({type:'roster:hello',session:bridgeSession},bridgeOrigin);}
- else if(msg.type==='roster:ack'&&ev.source===bridgeWindow&&ev.origin===bridgeOrigin&&msg.session===bridgeSession){ready=true;refresh();}
+ else if(msg.type==='roster:ack'&&ev.source===bridgeWindow&&ev.origin===bridgeOrigin&&msg.session===bridgeSession){ready=true;if(msg.initial?.ok&&Array.isArray(msg.initial.entries)){entries=msg.initial.entries;loaded=true;lastSync='剛剛';error('');render();}else refresh();}
  else if(msg.type==='roster:response'&&ev.source===bridgeWindow&&ev.origin===bridgeOrigin&&msg.session===bridgeSession){const job=pending.get(msg.requestId);if(!job)return;pending.delete(msg.requestId);clearTimeout(job.timer);if(msg.error)job.reject(new Error(msg.error));else if(!msg.result?.ok)job.reject(new Error('後端沒有回傳成功訊息'));else job.resolve(msg.result);}
 });
 function request(action,payload={}){if(!ready)return Promise.reject(new Error('尚未接通 Google 試算表'));return new Promise((resolve,reject)=>{const requestId=(++bridgeSeq)+'-'+crypto.randomUUID(),timer=setTimeout(()=>{pending.delete(requestId);reject(new Error('回應逾時，請重新整理頁面'));},25000);pending.set(requestId,{resolve,reject,timer});bridgeWindow.postMessage({type:'roster:request',session:bridgeSession,requestId,payload:{action,...payload}},bridgeOrigin);});}
