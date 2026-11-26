@@ -11,6 +11,12 @@ const AUDIT_TAB = '操作紀錄';
 
 function doGet(e) {
   const nonce=e && e.parameter && /^[a-zA-Z0-9-]{36,100}$/.test(String(e.parameter.bridge_nonce || '')) ? String(e.parameter.bridge_nonce) : '';
+  let initial=null;
+  if(nonce){
+    try{initial={ok:true,entries:visible_(list_(sheets_().sheet))};}
+    catch(err){initial={ok:false,error:String(err&&err.message||err||'後端錯誤')};}
+  }
+  const initialJson=JSON.stringify(initial).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');
   const html=`<!doctype html>
 <html lang="zh-Hant"><head><base target="_top"><meta charset="utf-8"></head>
 <body style="margin:0;background:transparent">
@@ -19,6 +25,7 @@ function doGet(e) {
   'use strict';
   const approvedOrigin = ${JSON.stringify(ALLOWED_ORIGIN)};
   const bridgeNonce = ${JSON.stringify(nonce)};
+  const initial = ${initialJson};
   let session = null;
   let lastOrigin = null;
   function send(message, origin) {
@@ -31,7 +38,7 @@ function doGet(e) {
     if (data.type === 'roster:hello' && typeof data.session === 'string' && data.session.length >= 18) {
       session = data.session;
       lastOrigin = event.origin;
-      send({type:'roster:ack',session:session},lastOrigin);
+      send({type:'roster:ack',session:session,initial:initial},lastOrigin);
       return;
     }
     if (data.type !== 'roster:request' || !session || data.session !== session ||
